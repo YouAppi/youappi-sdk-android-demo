@@ -1,6 +1,6 @@
 ### What is this repository for? ###
 
-Simple demo app showing how to use YouAppi's SDK.
+A simple Android demo app showing how to use YouAppi's Android SDK.
 
 The app includes 3 buttons showing ads for each product (ad unit type):
 
