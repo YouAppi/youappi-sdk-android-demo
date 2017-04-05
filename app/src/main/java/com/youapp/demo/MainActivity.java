@@ -14,6 +14,7 @@ import com.youappi.ai.sdk.logic.Logger;
 public class MainActivity extends AppCompatActivity implements
         RewardedVideoAd.RewardedVideoAdListener, Logger.LogListener, View.OnClickListener {
 
+    // Please note this is YouAppi's demo access token
     private static final String DEMO_TOKEN = "821cfa77-3127-42b5-9e6b-0afcecf77c67";
     private static final String TAG = MainActivity.class.getSimpleName();
 
