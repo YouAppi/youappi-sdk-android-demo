@@ -24,7 +24,7 @@ Create a device if prompted:
 
 For your convenience set the created device to be default:
 
-![run-3.png](https://bitbucket.org/repo/LoR4Eaz/images/754216472-run-3.png)![run-3.png](https://bitbucket.org/repo/LoR4Eaz/images/2597113858-run-3.png)
+![run-3.png](https://bitbucket.org/repo/LoR4Eaz/images/754216472-run-3.png)
 
 ### Who do I talk to? ###
 
