@@ -28,4 +28,4 @@ For your convenience set the created device to be default:
 
 ### Who do I talk to? ###
 
-* Guy Bashan, guy.b@youappi.com
+* Guy Bashan, [guy.b@youappi.com](mailto:guy.b@youappi.com)
