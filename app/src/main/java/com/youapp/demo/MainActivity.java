@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements
         buttonRewardedVideo.setEnabled(YouAPPi.getInstance().rewaredVideoAd().isAvailable());
         buttonInterstitialAd.setEnabled(YouAPPi.getInstance().cardAd().isAvailable());
         buttonInterstitialVideo.setEnabled(YouAPPi.getInstance().videoAd().isAvailable());
-        Log.w(TAG, "onAvailabilityChanged : rewaredVideoAd().isAvailable() = " + YouAPPi.getInstance().rewaredVideoAd().isAvailable());
+        Log.w(TAG, "onAvailabilityChanged : rewardedVideoAd().isAvailable() = " + YouAPPi.getInstance().rewaredVideoAd().isAvailable());
         Log.w(TAG, "onAvailabilityChanged : cardAd().isAvailable() = " + YouAPPi.getInstance().cardAd().isAvailable());
         Log.w(TAG, "onAvailabilityChanged : videoAd().isAvailable() = " + YouAPPi.getInstance().videoAd().isAvailable());
     }
