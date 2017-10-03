@@ -5,22 +5,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.youappi.ai.sdk.BaseAd;
 import com.youappi.ai.sdk.YouAPPi;
-import com.youappi.ai.sdk.ads.RewardedVideoAd;
+import com.youappi.ai.sdk.ads.YAInterstitialAd;
+import com.youappi.ai.sdk.ads.YAInterstitialVideoAd;
+import com.youappi.ai.sdk.ads.YARewardedVideoAd;
 import com.youappi.ai.sdk.logic.Logger;
 
-public class MainActivity extends AppCompatActivity implements
-        RewardedVideoAd.RewardedVideoAdListener, Logger.LogListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements Logger.LogListener, View.OnClickListener {
 
-    // Please note this is YouAppi's demo access token
+    enum ButtonState {
+        LOAD, LOADING, SHOW
+    }
+
+    // Please note this is YouAppi's demo access token. It should be replaced with your app access token.
     private static final String DEMO_TOKEN = "821cfa77-3127-42b5-9e6b-0afcecf77c67";
-    private static final String TAG = MainActivity.class.getSimpleName();
+    public static final String TAG = MainActivity.class.getSimpleName();
 
-    private Button buttonRewardedVideo;
-    private Button buttonInterstitialAd;
-    private Button buttonInterstitialVideo;
+    Button buttonRewardedVideo;
+    Button buttonInterstitialAd;
+    Button buttonInterstitialVideo;
+
+    ProgressBar progressBarRewardedVideo;
+    ProgressBar progressBarInterstitialAd;
+    ProgressBar progressBarInterstitialVideo;
+
+    private YARewardedVideoAd rewardedVideoAd;
+    private YAInterstitialVideoAd interstitialVideoAd;
+    private YAInterstitialAd interstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,21 +42,61 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
 
         YouAPPi.init(MainActivity.this, DEMO_TOKEN);
-        YouAPPi.getInstance().setLogListener(MainActivity.this);
-        YouAPPi.getInstance().rewaredVideoAd().setRewardedListener(MainActivity.this);
-        YouAPPi.getInstance().cardAd().setCardAdListener(MainActivity.this);
+
+        progressBarRewardedVideo = (ProgressBar) findViewById(R.id.progress_rewarded_video);
+        progressBarInterstitialAd = (ProgressBar) findViewById(R.id.progress_interstitial_ad);
+        progressBarInterstitialVideo = (ProgressBar) findViewById(R.id.progress_interstitial_video);
 
         buttonRewardedVideo = (Button) findViewById(R.id.button_rewarded_video);
-        buttonRewardedVideo.setEnabled(false);
         buttonRewardedVideo.setOnClickListener(this);
+        setButtonState(buttonRewardedVideo, ButtonState.LOAD);
 
         buttonInterstitialAd = (Button) findViewById(R.id.button_interstitial_ad);
-        buttonInterstitialAd.setEnabled(false);
         buttonInterstitialAd.setOnClickListener(this);
+        setButtonState(buttonInterstitialAd, ButtonState.LOAD);
 
         buttonInterstitialVideo = (Button) findViewById(R.id.button_interstitial_video);
-        buttonInterstitialVideo.setEnabled(false);
         buttonInterstitialVideo.setOnClickListener(this);
+        setButtonState(buttonInterstitialVideo, ButtonState.LOAD);
+
+        rewardedVideoAd = YouAPPi.getInstance().rewaredVideoAd("test_rewarded_video_ad");
+        interstitialVideoAd = YouAPPi.getInstance().interstitialVideoAd("test_interstitial_ad");
+        interstitialAd = YouAPPi.getInstance().interstitialAd("test_interstitial_ad");
+
+        rewardedVideoAd.setRewardedVideoAdListener(new DemoRewardedVideoAdListener(this));
+        interstitialVideoAd.setInterstitialVideoAdListener(new DemoInterstitialVideoAdListener(this));
+        interstitialAd.setInterstitialAdListener(new DemoInterstitialAdListener(this));
+    }
+
+    void setButtonState(Button button, ButtonState buttonState) {
+        String buttonText = null;
+        switch (button.getId()) {
+            case R.id.button_rewarded_video:
+                buttonText = "Rewarded Video Ad";
+                progressBarRewardedVideo.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
+                break;
+            case R.id.button_interstitial_ad:
+                buttonText = "Interstitial Ad";
+                progressBarInterstitialAd.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
+                break;
+            case R.id.button_interstitial_video:
+                buttonText = "Interstitial Video";
+                progressBarInterstitialVideo.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
+                break;
+        }
+
+
+        switch (buttonState) {
+            case LOAD:
+                button.setText("Load " + buttonText);
+                break;
+            case LOADING:
+                button.setText("Loading " + buttonText);
+                break;
+            case SHOW:
+                button.setText("Show " + buttonText);
+                break;
+        }
     }
 
     @Override
@@ -53,99 +107,30 @@ public class MainActivity extends AppCompatActivity implements
         switch (v.getId()) {
 
             case R.id.button_rewarded_video:
-                ad = YouAPPi.getInstance().rewaredVideoAd();
+                ad = rewardedVideoAd;
                 break;
 
             case R.id.button_interstitial_ad:
-                ad = YouAPPi.getInstance().cardAd();
+                ad = interstitialAd;
                 break;
 
             case R.id.button_interstitial_video:
-                ad = YouAPPi.getInstance().videoAd();
+                ad = interstitialVideoAd;
                 break;
         }
 
-        if (ad != null && ad.isAvailable())
-        {
-            ad.show();
+        if (ad != null) {
+            if (!ad.isAvailable()) {
+                setButtonState((Button) v, ButtonState.LOADING);
+                ad.load();
+            } else {
+                ad.show();
+            }
         }
     }
 
     @Override
-    public void log(String tag, String log)
-    {
-        Log.w("YouAppiDemo", "## Tag : " + tag + ", Log : " + log + " ##");
-    }
-
-    @Override
-    public void onCardShow()
-    {
-        Log.w(TAG, "onCardShow ");
-    }
-
-    @Override
-    public void onCardClose()
-    {
-        Log.w(TAG, "onCardClose ");
-    }
-
-    @Override
-    public void onCardClick()
-    {
-        Log.w(TAG, "onCardClick ");
-    }
-
-    @Override
-    public void onInitSuccess()
-    {
-        Log.w(TAG, "onInitSuccess ");
-    }
-
-    @Override
-    public void onLoadFailed(Exception e)
-    {
-        Log.w(TAG, "onLoadFailed ");
-    }
-
-    @Override
-    public void onPreloadFailed(Exception e)
-    {
-        Log.w(TAG, "onPreloadFailed ");
-
-    }
-
-    @Override
-    public void onAvailabilityChanged(boolean isAvailable)
-    {
-        buttonRewardedVideo.setEnabled(YouAPPi.getInstance().rewaredVideoAd().isAvailable());
-        buttonInterstitialAd.setEnabled(YouAPPi.getInstance().cardAd().isAvailable());
-        buttonInterstitialVideo.setEnabled(YouAPPi.getInstance().videoAd().isAvailable());
-        Log.w(TAG, "onAvailabilityChanged : rewardedVideoAd().isAvailable() = " + YouAPPi.getInstance().rewaredVideoAd().isAvailable());
-        Log.w(TAG, "onAvailabilityChanged : cardAd().isAvailable() = " + YouAPPi.getInstance().cardAd().isAvailable());
-        Log.w(TAG, "onAvailabilityChanged : videoAd().isAvailable() = " + YouAPPi.getInstance().videoAd().isAvailable());
-    }
-
-    @Override
-    public void onRewarded()
-    {
-        Log.w(TAG, "onRewarded ");
-    }
-
-    @Override
-    public void onVideoStart()
-    {
-        Log.w(TAG, "onVideoStart ");
-    }
-
-    @Override
-    public void onVideoEnd()
-    {
-        Log.w(TAG, "onVideoEnd ");
-    }
-
-    @Override
-    public void onVideoSkipped(int i)
-    {
-        Log.w(TAG, "onVideoSkipped ");
+    public void log(String tag, String msg) {
+        Log.i(tag, msg);
     }
 }
