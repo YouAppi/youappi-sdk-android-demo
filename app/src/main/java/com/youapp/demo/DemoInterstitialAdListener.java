@@ -38,7 +38,6 @@ public class DemoInterstitialAdListener implements YAInterstitialAd.Interstitial
     @Override
     public void onLoadSuccess(String adUnitId) {
         activity.setButtonState(activity.buttonInterstitialAd, MainActivity.ButtonState.SHOW);
-        Toast.makeText(activity, "Loaded ad unit: " + adUnitId, Toast.LENGTH_LONG).show();
     }
 
     @Override

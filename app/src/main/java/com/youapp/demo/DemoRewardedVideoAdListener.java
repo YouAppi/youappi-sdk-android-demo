@@ -56,7 +56,6 @@ public class DemoRewardedVideoAdListener implements RewardedVideoAdListener {
     @Override
     public void onLoadSuccess(String adUnitId) {
         activity.setButtonState(activity.buttonRewardedVideo, MainActivity.ButtonState.SHOW);
-        Toast.makeText(activity, "Loaded ad unit: " + adUnitId, Toast.LENGTH_LONG).show();
     }
 
     @Override

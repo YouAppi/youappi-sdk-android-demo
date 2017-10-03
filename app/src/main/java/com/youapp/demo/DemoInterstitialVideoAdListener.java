@@ -51,7 +51,6 @@ public class DemoInterstitialVideoAdListener implements YAInterstitialVideoAd.In
     @Override
     public void onLoadSuccess(String adUnitId) {
         activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.SHOW);
-        Toast.makeText(activity, "Loaded ad unit: " + adUnitId, Toast.LENGTH_LONG).show();
     }
 
     @Override
