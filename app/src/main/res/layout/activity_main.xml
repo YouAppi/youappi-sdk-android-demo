@@ -71,4 +71,16 @@
         android:layout_toLeftOf="@+id/button_interstitial_video"
         android:layout_toStartOf="@+id/button_interstitial_video" />
 
+    <Button
+        android:id="@+id/button_adunitid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button_interstitial_video"
+        android:layout_alignRight="@+id/button_interstitial_video"
+        android:layout_below="@+id/button_interstitial_video"
+        android:layout_marginTop="24dp"
+        android:layout_toEndOf="@+id/progress_interstitial_video"
+        android:layout_toRightOf="@+id/progress_interstitial_video"
+        android:text="Change Ad Unit Id" />
+
 </RelativeLayout>
