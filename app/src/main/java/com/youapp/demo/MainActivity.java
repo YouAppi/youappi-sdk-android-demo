@@ -6,9 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -21,8 +19,6 @@ import com.youappi.ai.sdk.ads.YAInterstitialVideoAd;
 import com.youappi.ai.sdk.ads.YARewardedVideoAd;
 import com.youappi.ai.sdk.logic.Logger;
 
-import static java.security.AccessController.getContext;
-
 public class MainActivity extends AppCompatActivity implements Logger.LogListener, View.OnClickListener {
 
     enum ButtonState {
@@ -34,20 +30,20 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
     public static final String TAG = MainActivity.class.getSimpleName();
 
     private ProgressBar progressBarRewardedVideo;
-    private ProgressBar progressBarInterstitialAd;
     private ProgressBar progressBarInterstitialVideo;
+    private ProgressBar progressBarInterstitialAd;
 
     Button buttonRewardedVideo;
-    Button buttonInterstitialAd;
     Button buttonInterstitialVideo;
+    Button buttonInterstitialAd;
 
     private YARewardedVideoAd rewardedVideoAd;
-    private YAInterstitialAd interstitialAd;
     private YAInterstitialVideoAd interstitialVideoAd;
+    private YAInterstitialAd interstitialAd;
 
     private String adUnitIdRewardedVideo = "test_rewarded_video";
-    private String adUnitIdInterstitialAd = "test_interstitial_ad";
     private String adUnitIdInterstitialVideo = "test_interstitial_video";
+    private String adUnitIdInterstitialAd = "test_interstitial_ad";
 
     private EditText createEditText(String text, String hint) {
         final EditText input = new EditText(MainActivity.this);
@@ -65,17 +61,17 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
         YouAPPi.init(MainActivity.this, DEMO_TOKEN);
 
         progressBarRewardedVideo = (ProgressBar) findViewById(R.id.progress_rewarded_video);
-        progressBarInterstitialAd = (ProgressBar) findViewById(R.id.progress_interstitial_ad);
         progressBarInterstitialVideo = (ProgressBar) findViewById(R.id.progress_interstitial_video);
+        progressBarInterstitialAd = (ProgressBar) findViewById(R.id.progress_interstitial_ad);
 
         buttonRewardedVideo = (Button) findViewById(R.id.button_rewarded_video);
         buttonRewardedVideo.setOnClickListener(this);
 
-        buttonInterstitialAd = (Button) findViewById(R.id.button_interstitial_ad);
-        buttonInterstitialAd.setOnClickListener(this);
-
         buttonInterstitialVideo = (Button) findViewById(R.id.button_interstitial_video);
         buttonInterstitialVideo.setOnClickListener(this);
+
+        buttonInterstitialAd = (Button) findViewById(R.id.button_interstitial_ad);
+        buttonInterstitialAd.setOnClickListener(this);
 
         Button buttonAdUnitId = (Button) findViewById(R.id.button_adunitid);
         buttonAdUnitId.setOnClickListener(new View.OnClickListener() {
@@ -90,16 +86,16 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
 
     private void initAdUnits() {
         rewardedVideoAd = YouAPPi.getInstance().rewaredVideoAd(adUnitIdRewardedVideo);
-        interstitialVideoAd = YouAPPi.getInstance().interstitialVideoAd(adUnitIdInterstitialAd);
-        interstitialAd = YouAPPi.getInstance().interstitialAd(adUnitIdInterstitialVideo);
+        interstitialVideoAd = YouAPPi.getInstance().interstitialVideoAd(adUnitIdInterstitialVideo);
+        interstitialAd = YouAPPi.getInstance().interstitialAd(adUnitIdInterstitialAd);
 
         rewardedVideoAd.setRewardedVideoAdListener(new DemoRewardedVideoAdListener(this));
         interstitialVideoAd.setInterstitialVideoAdListener(new DemoInterstitialVideoAdListener(this));
         interstitialAd.setInterstitialAdListener(new DemoInterstitialAdListener(this));
 
         setButtonState(buttonRewardedVideo, ButtonState.LOAD);
-        setButtonState(buttonInterstitialAd, ButtonState.LOAD);
         setButtonState(buttonInterstitialVideo, ButtonState.LOAD);
+        setButtonState(buttonInterstitialAd, ButtonState.LOAD);
     }
 
     void setButtonState(Button button, ButtonState buttonState) {
@@ -109,13 +105,13 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
                 buttonText = "Rewarded Video Ad";
                 progressBarRewardedVideo.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
                 break;
-            case R.id.button_interstitial_ad:
-                buttonText = "Interstitial Ad";
-                progressBarInterstitialAd.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
-                break;
             case R.id.button_interstitial_video:
                 buttonText = "Interstitial Video";
                 progressBarInterstitialVideo.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
+                break;
+            case R.id.button_interstitial_ad:
+                buttonText = "Interstitial Ad";
+                progressBarInterstitialAd.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
                 break;
         }
 
@@ -144,12 +140,12 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
                 ad = rewardedVideoAd;
                 break;
 
-            case R.id.button_interstitial_ad:
-                ad = interstitialAd;
-                break;
-
             case R.id.button_interstitial_video:
                 ad = interstitialVideoAd;
+                break;
+
+            case R.id.button_interstitial_ad:
+                ad = interstitialAd;
                 break;
         }
 
@@ -176,12 +172,12 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
         final EditText editRewardedVideo = createEditText(adUnitIdRewardedVideo, "Rewarded video ad unit id");
-        final EditText editInterstitialAd = createEditText(adUnitIdInterstitialAd, "Interstitial ad unit id");
         final EditText editInterstitialVideo = createEditText(adUnitIdInterstitialVideo, "Interstitial video ad unit id");
+        final EditText editInterstitialAd = createEditText(adUnitIdInterstitialAd, "Interstitial ad unit id");
 
         linearLayout.addView(editRewardedVideo);
-        linearLayout.addView(editInterstitialAd);
         linearLayout.addView(editInterstitialVideo);
+        linearLayout.addView(editInterstitialAd);
 
         builder.setView(linearLayout);
 
@@ -189,8 +185,8 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 adUnitIdRewardedVideo = editRewardedVideo.getText().toString().trim();
-                adUnitIdInterstitialAd = editInterstitialAd.getText().toString().trim();
                 adUnitIdInterstitialVideo = editInterstitialVideo.getText().toString().trim();
+                adUnitIdInterstitialAd = editInterstitialAd.getText().toString().trim();
 
                 initAdUnits();
             }

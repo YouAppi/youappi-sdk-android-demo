@@ -16,33 +16,31 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:elevation="0dp"
         android:text="Show Rewarded Video Ad" />
-
-    <Button
-        android:id="@+id/button_interstitial_video"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show Interstitial Video"
-        android:layout_marginTop="31dp"
-        android:layout_below="@+id/button_interstitial_ad"
-        android:layout_alignLeft="@+id/button_interstitial_ad"
-        android:layout_alignStart="@+id/button_interstitial_ad"
-        android:layout_alignRight="@+id/button_interstitial_ad"
-        android:layout_alignEnd="@+id/button_interstitial_ad" />
 
     <Button
         android:id="@+id/button_interstitial_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show Interstitial Ad"
-        android:layout_marginTop="33dp"
+        android:layout_alignEnd="@+id/button_interstitial_video"
+        android:layout_alignLeft="@+id/button_interstitial_video"
+        android:layout_alignRight="@+id/button_interstitial_video"
+        android:layout_alignStart="@+id/button_interstitial_video"
+        android:layout_below="@+id/button_interstitial_video"
+        android:layout_marginTop="31dp"
+        android:text="Show Interstitial Ad" />
+
+    <Button
+        android:id="@+id/button_interstitial_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/button_rewarded_video"
-        android:layout_alignLeft="@+id/button_rewarded_video"
-        android:layout_alignStart="@+id/button_rewarded_video"
-        android:layout_alignRight="@+id/button_rewarded_video"
-        android:layout_alignEnd="@+id/button_rewarded_video" />
+        android:layout_marginTop="34dp"
+        android:layout_toEndOf="@+id/progress_rewarded_video"
+        android:layout_toRightOf="@+id/progress_rewarded_video"
+        android:text="Show Interstitial Video" />
 
     <ProgressBar
         android:id="@+id/progress_rewarded_video"
@@ -54,15 +52,6 @@
         android:layout_toStartOf="@+id/button_rewarded_video" />
 
     <ProgressBar
-        android:id="@+id/progress_interstitial_ad"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button_interstitial_ad"
-        android:layout_toLeftOf="@+id/button_interstitial_ad"
-        android:layout_toStartOf="@+id/button_interstitial_ad" />
-
-    <ProgressBar
         android:id="@+id/progress_interstitial_video"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
@@ -71,16 +60,25 @@
         android:layout_toLeftOf="@+id/button_interstitial_video"
         android:layout_toStartOf="@+id/button_interstitial_video" />
 
+    <ProgressBar
+        android:id="@+id/progress_interstitial_ad"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_interstitial_ad"
+        android:layout_toLeftOf="@+id/button_interstitial_ad"
+        android:layout_toStartOf="@+id/button_interstitial_ad" />
+
     <Button
         android:id="@+id/button_adunitid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button_interstitial_video"
-        android:layout_alignRight="@+id/button_interstitial_video"
-        android:layout_below="@+id/button_interstitial_video"
+        android:layout_alignEnd="@+id/button_interstitial_ad"
+        android:layout_alignRight="@+id/button_interstitial_ad"
+        android:layout_below="@+id/button_interstitial_ad"
         android:layout_marginTop="24dp"
-        android:layout_toEndOf="@+id/progress_interstitial_video"
-        android:layout_toRightOf="@+id/progress_interstitial_video"
+        android:layout_toEndOf="@+id/progress_interstitial_ad"
+        android:layout_toRightOf="@+id/progress_interstitial_ad"
         android:text="Change Ad Unit Id" />
 
 </RelativeLayout>
