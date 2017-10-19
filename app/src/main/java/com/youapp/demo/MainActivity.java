@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
     private YAInterstitialVideoAd interstitialVideoAd;
     private YAInterstitialAd interstitialAd;
 
-    private String adUnitIdRewardedVideo = "test_rewarded_video";
-    private String adUnitIdInterstitialVideo = "test_interstitial_video";
-    private String adUnitIdInterstitialAd = "test_interstitial_ad";
+    private String adUnitIdRewardedVideo = "test_rewarded_video_android";
+    private String adUnitIdInterstitialVideo = "test_interstitial_video_android";
+    private String adUnitIdInterstitialAd = "test_interstitial_ad_android";
 
     private EditText createEditText(String text, String hint) {
         final EditText input = new EditText(MainActivity.this);
