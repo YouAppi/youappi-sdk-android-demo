@@ -22,7 +22,7 @@ import com.youappi.ai.sdk.logic.Logger;
 public class MainActivity extends AppCompatActivity implements Logger.LogListener, View.OnClickListener {
 
     enum ButtonState {
-        LOAD, LOADING, SHOW
+        LOAD, LOADING, SHOW, ERROR
     }
 
     // Please note this is YouAppi's demo access token. It should be replaced with your app access token.
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
     }
 
     private void initAdUnits() {
-        rewardedVideoAd = YouAPPi.getInstance().rewaredVideoAd(adUnitIdRewardedVideo);
+        rewardedVideoAd = YouAPPi.getInstance().rewardedVideoAd(adUnitIdRewardedVideo);
         interstitialVideoAd = YouAPPi.getInstance().interstitialVideoAd(adUnitIdInterstitialVideo);
         interstitialAd = YouAPPi.getInstance().interstitialAd(adUnitIdInterstitialAd);
 

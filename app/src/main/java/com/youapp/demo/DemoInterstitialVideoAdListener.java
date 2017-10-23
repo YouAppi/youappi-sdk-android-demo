@@ -57,12 +57,14 @@ public class DemoInterstitialVideoAdListener implements YAInterstitialVideoAd.In
     public void onLoadFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
         Toast.makeText(activity, "Failed loading ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
+        activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.LOAD);
     }
 
     @Override
     public void onShowFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
         Toast.makeText(activity, "Failed showing ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
+        activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.LOAD);
     }
 
     @Override

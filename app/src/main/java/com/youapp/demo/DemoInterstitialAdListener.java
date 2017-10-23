@@ -45,6 +45,7 @@ public class DemoInterstitialAdListener implements YAInterstitialAd.Interstitial
         Toast.makeText(activity, "Failed loading ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
         Log.e(MainActivity.TAG, "Failed loading ad unit: " + adUnitId, e);
+        activity.setButtonState(activity.buttonInterstitialAd, MainActivity.ButtonState.LOAD);
     }
 
     @Override
@@ -52,6 +53,7 @@ public class DemoInterstitialAdListener implements YAInterstitialAd.Interstitial
         Toast.makeText(activity, "Failed showing ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
         Log.e(MainActivity.TAG, "Failed showing ad unit: " + adUnitId, e);
+        activity.setButtonState(activity.buttonInterstitialAd, MainActivity.ButtonState.LOAD);
     }
 
     @Override

@@ -15,3 +15,11 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep class com.google.gson.**{ *;}
+	-keep class com.google.android.gms.**{*;}
+	-keep class com.youappi.ai.sdk.**{*;}
+	-keep interface com.youappi.ai.sdk.**{*;}
+	-keep enum com.youappi.ai.sdk.**{*;}
+	-keepclassmembers class * {
+		@android.webkit.JavascriptInterface <methods>;
+	}
