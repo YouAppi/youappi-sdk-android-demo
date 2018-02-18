@@ -1,4 +1,4 @@
-package com.youapp.demo;
+package com.youappi.sdk.demo;
 
 import android.util.Log;
 import android.widget.Toast;

@@ -1,4 +1,4 @@
-package com.youapp.demo;
+package com.youappi.sdk.demo;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
         LOAD, LOADING, SHOW, ERROR
     }
 
-    // Please note this is YouAppi's demo access token. It should be replaced with your app access token.
-    private static final String DEMO_TOKEN = "821cfa77-3127-42b5-9e6b-0afcecf77c67";
     public static final String TAG = MainActivity.class.getSimpleName();
 
     private ProgressBar progressBarRewardedVideo;
@@ -57,8 +55,6 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        YouAPPi.init(MainActivity.this, DEMO_TOKEN);
 
         progressBarRewardedVideo = (ProgressBar) findViewById(R.id.progress_rewarded_video);
         progressBarInterstitialVideo = (ProgressBar) findViewById(R.id.progress_interstitial_video);

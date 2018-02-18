@@ -1,26 +1,21 @@
-package com.youapp.demo;
+package com.youappi.sdk.demo;
 
 import android.widget.Toast;
 
 import com.youappi.ai.sdk.YAErrorCode;
-import com.youappi.ai.sdk.ads.YARewardedVideoAd.RewardedVideoAdListener;
+import com.youappi.ai.sdk.ads.YAInterstitialVideoAd;
 
 /**
  * User: Bashan
  * Date: 02/10/2017
- * Time: 16:22
+ * Time: 16:21
  */
-public class DemoRewardedVideoAdListener implements RewardedVideoAdListener {
+public class DemoInterstitialVideoAdListener implements YAInterstitialVideoAd.InterstitialVideoAdListener {
 
     private MainActivity activity;
 
-    DemoRewardedVideoAdListener(MainActivity activity) {
+    DemoInterstitialVideoAdListener(MainActivity activity) {
         this.activity = activity;
-    }
-
-    @Override
-    public void onRewarded(String adUnitId) {
-        Toast.makeText(activity, "Rewarded ad unit: " + adUnitId, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -55,21 +50,21 @@ public class DemoRewardedVideoAdListener implements RewardedVideoAdListener {
 
     @Override
     public void onLoadSuccess(String adUnitId) {
-        activity.setButtonState(activity.buttonRewardedVideo, MainActivity.ButtonState.SHOW);
+        activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.SHOW);
     }
 
     @Override
     public void onLoadFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
         Toast.makeText(activity, "Failed loading ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
-        activity.setButtonState(activity.buttonRewardedVideo, MainActivity.ButtonState.LOAD);
+        activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.LOAD);
     }
 
     @Override
     public void onShowFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
         Toast.makeText(activity, "Failed showing ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
-        activity.setButtonState(activity.buttonRewardedVideo, MainActivity.ButtonState.LOAD);
+        activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.LOAD);
     }
 
     @Override
@@ -79,6 +74,6 @@ public class DemoRewardedVideoAdListener implements RewardedVideoAdListener {
 
     @Override
     public void onAdEnded(String s) {
-        activity.setButtonState(activity.buttonRewardedVideo, MainActivity.ButtonState.LOAD);
+        activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.LOAD);
     }
 }

@@ -1,4 +1,4 @@
-package com.youapp.demo;
+package com.youappi.sdk.demo;
 
 import org.junit.Test;
 
