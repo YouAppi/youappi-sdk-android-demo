@@ -10,6 +10,8 @@ import com.google.android.gms.ads.reward.RewardedVideoAd;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+  private static final String ADMOB_APP_ID = "ca-app-pub-9942448998483932~5444617199";
+
   private static final String ADMOB_REWARDED_VIDEO_ADUNIT_ID = "ca-app-pub-9942448998483932/6503382149";
 
   private RewardedVideoAd rewardedVideo;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     findViewById(R.id.load_rewarded).setOnClickListener(this);
     findViewById(R.id.show_rewarded).setOnClickListener(this);
 
-    MobileAds.initialize(this, ADMOB_REWARDED_VIDEO_ADUNIT_ID);
+    MobileAds.initialize(this, ADMOB_APP_ID);
     rewardedVideo = MobileAds.getRewardedVideoAdInstance(this);
   }
 
