@@ -37,6 +37,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.1'
     testCompile 'junit:junit:4.12'
-    compile(name: 'youappiandroidsdk', ext: 'aar')
-    compile 'com.google.code.gson:gson:2.6'
+
+    implementation("com.youappi.ai.sdk:youappiandroidsdk-moat:4.0.1-RELEASE")
 }

@@ -22,7 +22,9 @@ allprojects {
         flatDir {
             dirs 'libs'
         }
+
         google()
+        maven { url "http://nexus-ext.youappi.com:8081/repository/mvn-host-rel" }
     }
 }
 
