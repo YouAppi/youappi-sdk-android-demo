@@ -38,5 +38,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.1'
     testCompile 'junit:junit:4.12'
 
-    implementation("com.youappi.sdk:youappi-android-sdk-moat:4.0.1")
+    implementation("com.youappi.sdk:youappiandroidsdk-debug:4.0.1-SNAPSHOT")
 }

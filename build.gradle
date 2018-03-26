@@ -1,5 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+ext.repoServerDNS = { ->
+    return    project.hasProperty('repoUrl')  ? "${project.repoUrl}" : 'nexus-ext.youappi.com'
+}
+
+ext.repoUrlSuffix = { ->
+    return   ( project.hasProperty('releaseType') && releaseType == 'SNAPSHOT' ) ? 'release' : 'snapshot'
+}
+
+
 buildscript {
     repositories {
         jcenter()
@@ -24,7 +33,9 @@ allprojects {
         }
 
         google()
-        maven { url "http://repository.youappi.com/repository/release" }
+        maven {
+            url "http://${project.repoServerDNS}/repository/${project.repoUrlSuffix}"
+        }
     }
 }
 
