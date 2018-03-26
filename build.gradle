@@ -24,7 +24,7 @@ allprojects {
         }
 
         google()
-        maven { url "http://nexus-ext.youappi.com:8081/repository/mvn-host-rel" }
+        maven { url "http://repository.youappi.com/repository/release" }
     }
 }
 
