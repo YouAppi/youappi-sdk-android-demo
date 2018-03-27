@@ -13,6 +13,8 @@ import com.youappi.ai.sdk.ads.YAInterstitialAd;
  */
 public class DemoInterstitialAdListener implements YAInterstitialAd.InterstitialAdListener {
 
+    private static final String TAG = DemoInterstitialVideoAdListener.class.getSimpleName();
+
     private MainActivity activity;
 
     DemoInterstitialAdListener(MainActivity activity) {
@@ -42,17 +44,17 @@ public class DemoInterstitialAdListener implements YAInterstitialAd.Interstitial
 
     @Override
     public void onLoadFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
+        Log.e(TAG, "Failed loading ad unit: " + adUnitId, e);
         Toast.makeText(activity, "Failed loading ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
-        Log.e(MainActivity.TAG, "Failed loading ad unit: " + adUnitId, e);
         activity.setButtonState(activity.buttonInterstitialAd, MainActivity.ButtonState.LOAD);
     }
 
     @Override
     public void onShowFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
+        Log.e(TAG, "Failed showing ad unit: " + adUnitId, e);
         Toast.makeText(activity, "Failed showing ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
-        Log.e(MainActivity.TAG, "Failed showing ad unit: " + adUnitId, e);
         activity.setButtonState(activity.buttonInterstitialAd, MainActivity.ButtonState.LOAD);
     }
 

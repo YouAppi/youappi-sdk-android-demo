@@ -21,24 +21,16 @@ import com.youappi.ai.sdk.logic.Logger;
 
 public class MainActivity extends AppCompatActivity implements Logger.LogListener, View.OnClickListener {
 
-    enum ButtonState {
-        LOAD, LOADING, SHOW, ERROR
-    }
-
-    public static final String TAG = MainActivity.class.getSimpleName();
-
-    private ProgressBar progressBarRewardedVideo;
-    private ProgressBar progressBarInterstitialVideo;
-    private ProgressBar progressBarInterstitialAd;
-
+    static final String TAG = MainActivity.class.getSimpleName();
     Button buttonRewardedVideo;
     Button buttonInterstitialVideo;
     Button buttonInterstitialAd;
-
+    private ProgressBar progressBarRewardedVideo;
+    private ProgressBar progressBarInterstitialVideo;
+    private ProgressBar progressBarInterstitialAd;
     private YARewardedVideoAd rewardedVideoAd;
     private YAInterstitialVideoAd interstitialVideoAd;
     private YAInterstitialAd interstitialAd;
-
     private String adUnitIdRewardedVideo = "test_rewarded_video_android";
     private String adUnitIdInterstitialVideo = "test_interstitial_video_android";
     private String adUnitIdInterstitialAd = "test_interstitial_ad_android";
@@ -195,5 +187,9 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
         });
 
         builder.show();
+    }
+
+    enum ButtonState {
+        LOAD, LOADING, SHOW, ERROR
     }
 }

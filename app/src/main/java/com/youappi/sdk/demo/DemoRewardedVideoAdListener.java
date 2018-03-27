@@ -1,5 +1,6 @@
 package com.youappi.sdk.demo;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.youappi.ai.sdk.YAErrorCode;
@@ -11,6 +12,8 @@ import com.youappi.ai.sdk.ads.YARewardedVideoAd.RewardedVideoAdListener;
  * Time: 16:22
  */
 public class DemoRewardedVideoAdListener implements RewardedVideoAdListener {
+
+    private static final String TAG = DemoInterstitialVideoAdListener.class.getSimpleName();
 
     private MainActivity activity;
 
@@ -60,6 +63,7 @@ public class DemoRewardedVideoAdListener implements RewardedVideoAdListener {
 
     @Override
     public void onLoadFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
+        Log.e(TAG, "Failed loading ad unit: " + adUnitId, e);
         Toast.makeText(activity, "Failed loading ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
         activity.setButtonState(activity.buttonRewardedVideo, MainActivity.ButtonState.LOAD);
@@ -67,6 +71,7 @@ public class DemoRewardedVideoAdListener implements RewardedVideoAdListener {
 
     @Override
     public void onShowFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
+        Log.e(TAG, "Failed showing ad unit: " + adUnitId, e);
         Toast.makeText(activity, "Failed showing ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
         activity.setButtonState(activity.buttonRewardedVideo, MainActivity.ButtonState.LOAD);

@@ -1,5 +1,6 @@
 package com.youappi.sdk.demo;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.youappi.ai.sdk.YAErrorCode;
@@ -11,6 +12,8 @@ import com.youappi.ai.sdk.ads.YAInterstitialVideoAd;
  * Time: 16:21
  */
 public class DemoInterstitialVideoAdListener implements YAInterstitialVideoAd.InterstitialVideoAdListener {
+
+    private static final String TAG = DemoInterstitialVideoAdListener.class.getSimpleName();
 
     private MainActivity activity;
 
@@ -55,6 +58,7 @@ public class DemoInterstitialVideoAdListener implements YAInterstitialVideoAd.In
 
     @Override
     public void onLoadFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
+        Log.e(TAG, "Failed loading ad unit: " + adUnitId, e);
         Toast.makeText(activity, "Failed loading ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
         activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.LOAD);
@@ -62,6 +66,7 @@ public class DemoInterstitialVideoAdListener implements YAInterstitialVideoAd.In
 
     @Override
     public void onShowFailure(String adUnitId, YAErrorCode yaErrorCode, Exception e) {
+        Log.e(TAG, "Failed showing ad unit: " + adUnitId, e);
         Toast.makeText(activity, "Failed showing ad unit: " + adUnitId +
                 " for reason: " + yaErrorCode, Toast.LENGTH_LONG).show();
         activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.LOAD);
