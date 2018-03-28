@@ -1,1 +1,1 @@
-include ':app', ':app_admob', ':app_mopub'
+include ':app-demo', ':app-demo-admob', ':app-demo-mopub'
