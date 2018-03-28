@@ -34,9 +34,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    compile 'com.google.android.gms:play-services-ads:10.0.1'
+    compile 'com.google.android.gms:play-services-ads:12.0.0'
 
-    compile(name: 'youappiandroidsdk', ext: 'aar')
-    compile(name:'youappiadmob', ext:'aar')
+    implementation "com.youappi.sdk:youappi-sdk-android-moat:4.0.2"
+    implementation name:'youappiadmob', ext:'aar'
 
 }
