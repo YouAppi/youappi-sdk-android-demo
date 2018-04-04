@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "com.youappi.medaition.admob.demo"
-        minSdkVersion 23
+        minSdkVersion 22
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -39,6 +39,6 @@ dependencies {
 
     // YouAppi SDK and AdMob adapter dependency
     implementation "com.youappi.sdk:youappi-sdk-android-moat:4.0.2"
-    implementation name:'youappiadmob', ext:'aar'
+    api name:'youappiadmob', ext:'aar'
 
 }
