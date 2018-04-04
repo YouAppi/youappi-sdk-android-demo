@@ -74,7 +74,8 @@
         android:id="@+id/spinner_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#800f0f0f">
+        android:background="#800f0f0f"
+        android:visibility="gone">
 
         <ProgressBar
             style="?android:attr/progressBarStyleLarge"
