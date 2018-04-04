@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    } else {
 //      moatState.setText("Trackers: None");
 //    }
-        updateUiState();
+        
     }
 
     @Override
@@ -220,5 +220,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showInterstitialAd.setEnabled(interstitialAd != null && interstitialAd.isLoaded());
         showInterstitialVideo.setEnabled(interstitialVideo != null && interstitialVideo.isLoaded());
         showRewardedVideo.setEnabled(rewardedVideo.isLoaded() && !rewardedShown);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUiState();
     }
 }
