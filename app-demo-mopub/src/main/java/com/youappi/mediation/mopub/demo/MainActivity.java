@@ -5,15 +5,19 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mopub.common.MoPubReward;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
 import com.mopub.mobileads.MoPubRewardedVideos;
+import com.youappi.mediation.mopub.YouAppiMopub;
 
 import java.util.Set;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MoPubRewardedVideoListener, MoPubInterstitial.InterstitialAdListener {
 
     public static final String UNIT_ID_REWARDED_VIDEO = "5aafbe7f552842d48373f082bd585aa9";
@@ -64,6 +68,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         moPubInterstitialVideo = new MoPubInterstitial(this, UNIT_ID_INTERSTITIAL_VIDEO);
         moPubInterstitial.setInterstitialAdListener(this);
         MoPubRewardedVideos.setRewardedVideoListener(this);
+
+        TextView moatState = (TextView) findViewById(R.id.moat_state);
+        if (YouAppiMopub.isMoat()) {
+            moatState.setText("Trackers: Moat");
+        } else {
+            moatState.setText("Trackers: None");
+        }
     }
 
     @Override
@@ -126,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rewardedVideoReady = false;
         updateUiState();
         showSpinner(false);
+        showToast(getString(R.string.rewarded_loading_failed));
     }
 
     @Override
@@ -170,14 +182,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onInterstitialFailed(MoPubInterstitial interstitial, MoPubErrorCode errorCode) {
         updateUiState();
         showSpinner(false);
+        showToast(getString(R.string.interstitial_loading_failed));
     }
 
     @Override
     public void onInterstitialShown(MoPubInterstitial interstitial) {
-        if (interstitial == moPubInterstitial){
+        if (interstitial == moPubInterstitial) {
             interstitialAdShown = true;
         }
-        if (interstitial == moPubInterstitialVideo){
+        if (interstitial == moPubInterstitialVideo) {
             interstitialVideoShown = true;
         }
         updateUiState();
@@ -185,10 +198,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onInterstitialClicked(MoPubInterstitial interstitial) {
-        if (interstitial == moPubInterstitial){
+        if (interstitial == moPubInterstitial) {
             interstitialAdShown = true;
         }
-        if (interstitial == moPubInterstitialVideo){
+        if (interstitial == moPubInterstitialVideo) {
             interstitialVideoShown = true;
         }
         updateUiState();
@@ -196,12 +209,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onInterstitialDismissed(MoPubInterstitial interstitial) {
-        if (interstitial == moPubInterstitial){
+        if (interstitial == moPubInterstitial) {
             interstitialAdShown = true;
         }
-        if (interstitial == moPubInterstitialVideo){
+        if (interstitial == moPubInterstitialVideo) {
             interstitialVideoShown = true;
         }
         updateUiState();
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (spinner.getVisibility()!=View.GONE){
+            showSpinner(false);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

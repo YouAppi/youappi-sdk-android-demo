@@ -6,45 +6,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="4dp"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_margin="4dp">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/load_interstitial_ad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Load Interstitial Ad" />
+            android:text="@string/load_interstitial_ad" />
 
         <Button
             android:id="@+id/show_interstitial_ad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Interstitial Ad" />
+            android:text="@string/show_interstitial_ad" />
 
         <Button
             android:id="@+id/load_interstitial_video"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Load Interstitial Video" />
+            android:text="@string/load_interstitial_video" />
 
         <Button
             android:id="@+id/show_interstitial_video"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Interstitial video" />
+            android:text="@string/show_interstitial_video" />
 
         <Button
             android:id="@+id/load_rewarded"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Load Rewarded Video" />
+            android:text="@string/load_rewarded_video" />
 
         <Button
             android:id="@+id/show_rewarded"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show rewarded video" />
+            android:text="@string/show_rewarded_video" />
 
 
     </LinearLayout>
@@ -57,7 +57,7 @@
         android:layout_margin="2dp"
         android:textColor="@android:color/black"
         android:textSize="12dp"
-        tools:ignore="RtlHardcoded" />
+        tools:ignore="RtlHardcoded,SpUsage" />
 
     <TextView
         android:id="@+id/moat_state"
@@ -68,7 +68,7 @@
         android:text=""
         android:textColor="@android:color/black"
         android:textSize="12dp"
-        tools:ignore="RtlHardcoded" />
+        tools:ignore="RtlHardcoded,SpUsage" />
 
     <FrameLayout
         android:id="@+id/spinner_layout"
@@ -81,7 +81,6 @@
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center" />
 
     </FrameLayout>
