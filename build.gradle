@@ -23,7 +23,8 @@ allprojects {
         }
 
         google()
-        maven { url "http://repository.youappi.com/repository/snapshot" }
+//        maven { url "http://repository.youappi.com/repository/snapshot" }
+        maven { url "http://nexus-ext.youappi.com/repository/snapshot" }
     }
 }
 
