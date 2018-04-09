@@ -15,6 +15,7 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.youappi.ai.sdk.YouAPPi;
+import com.youappi.mediation.admob.YouAppiAdmob;
 import com.youappi.mediation.admob.YouAppiInterstitialAd;
 import com.youappi.mediation.admob.YouAppiInterstitialVideo;
 
@@ -159,11 +160,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         versionStr.setText("SDK version: " + YouAPPi.getInstance().getVersionStr());
 
         TextView moatState = (TextView) findViewById(R.id.moat_state);
-//    if (YouAppiMopub.isMoat()){
-//      moatState.setText("Trackers: Moat");
-//    } else {
-//      moatState.setText("Trackers: None");
-//    }
+        if (YouAppiAdmob.isMoat()) {
+            moatState.setText("Trackers: Moat");
+        } else {
+            moatState.setText("Trackers: None");
+        }
 
     }
 
