@@ -38,6 +38,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:12.0.1'
 
     // YouAppi SDK and AdMob adapter dependency
-    implementation 'com.youappi.sdk:youappi-sdk-android-admob:4.0.3-SNAPSHOT'
+//    implementation 'com.youappi.sdk:youappi-sdk-android-admob:4.0.3-SNAPSHOT'
 
 }

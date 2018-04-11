@@ -12,12 +12,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.youappi.ai.sdk.BaseAd;
-import com.youappi.ai.sdk.YouAPPi;
-import com.youappi.ai.sdk.ads.YAInterstitialAd;
-import com.youappi.ai.sdk.ads.YAInterstitialVideoAd;
-import com.youappi.ai.sdk.ads.YARewardedVideoAd;
-import com.youappi.ai.sdk.logic.Logger;
+import com.youappi.sdk.BaseAd;
+import com.youappi.sdk.YouAPPi;
+import com.youappi.sdk.ads.YAInterstitialAd;
+import com.youappi.sdk.ads.YAInterstitialVideoAd;
+import com.youappi.sdk.ads.YARewardedVideoAd;
+import com.youappi.sdk.logic.Logger;
+
 
 public class MainActivity extends AppCompatActivity implements Logger.LogListener, View.OnClickListener {
 
