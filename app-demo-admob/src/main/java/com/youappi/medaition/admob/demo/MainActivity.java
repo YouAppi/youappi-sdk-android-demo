@@ -14,10 +14,10 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
-import com.youappi.ai.sdk.YouAPPi;
-import com.youappi.mediation.admob.YouAppiAdmob;
-import com.youappi.mediation.admob.YouAppiInterstitialAd;
-import com.youappi.mediation.admob.YouAppiInterstitialVideo;
+import com.youappi.sdk.YouAPPi;
+import com.youappi.sdk.mediation.admob.YouAppiAdmob;
+import com.youappi.sdk.mediation.admob.YouAppiInterstitialAd;
+import com.youappi.sdk.mediation.admob.YouAppiInterstitialVideo;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

@@ -13,7 +13,7 @@ import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
 import com.mopub.mobileads.MoPubRewardedVideos;
-import com.youappi.mediation.mopub.YouAppiMopub;
+import com.youappi.sdk.mediation.mopub.YouAppiMopub;
 
 import java.util.Set;
 
