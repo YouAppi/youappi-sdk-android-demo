@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         moPubInterstitial.setInterstitialAdListener(this);
         MoPubRewardedVideos.setRewardedVideoListener(this);
 
-        TextView moatState = (TextView) findViewById(R.id.moat_state);
+        TextView moatState = findViewById(R.id.moat_state);
         if (YouAppiMopub.isMoat()) {
             moatState.setText("Trackers: Moat");
         } else {
