@@ -3,8 +3,9 @@ package com.youappi.sdk.demo;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.youappi.ai.sdk.YAErrorCode;
-import com.youappi.ai.sdk.ads.YAInterstitialAd;
+import com.youappi.sdk.YAErrorCode;
+import com.youappi.sdk.ads.YAInterstitialAd;
+
 
 /**
  * User: Bashan

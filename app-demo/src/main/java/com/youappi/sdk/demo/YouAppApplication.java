@@ -2,7 +2,7 @@ package com.youappi.sdk.demo;
 
 import android.app.Application;
 
-import com.youappi.ai.sdk.YouAPPi;
+import com.youappi.sdk.YouAPPi;
 
 /**
  * User: Bashan
