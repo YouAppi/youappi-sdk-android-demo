@@ -39,5 +39,6 @@ dependencies {
 
     // YouAppi SDK and AdMob adapter dependency
     implementation 'com.youappi.sdk:youappi-sdk-android-admob:4.0.4-SNAPSHOT'
+//    implementation "com.youappi.sdk:youappi-sdk-android-moat:4.0.4-SNAPSHOT"
 
 }
