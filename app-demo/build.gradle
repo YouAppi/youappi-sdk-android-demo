@@ -1,14 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        release {
-            storeFile file('C:/dev/youappi-sdk-android-demo-simple/youappidemo.jks')
-            keyAlias 'youappi'
-            keyPassword 'y0uAPP1'
-            storePassword 'y0uAPP1'
-        }
-    }
+
     compileSdkVersion 25
     buildToolsVersion '27.0.3'
     defaultConfig {
@@ -21,9 +14,6 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
         }
         debug {
         }
