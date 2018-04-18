@@ -28,6 +28,8 @@ dependencies {
 
     implementation 'com.android.support:appcompat-v7:25.4.0'
     testImplementation 'junit:junit:4.12'
+
+    // YouAppi SDK dependency
     implementation "com.youappi.sdk:youappi-sdk-android-moat:4.0.4"
 }
 
