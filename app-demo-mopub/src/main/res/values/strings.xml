@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MoPub Adapter Demo App</string>
+    <!--Toasts-->
+    <string name="rewarded_loading_failed">Rewarded loading failed.</string>
+    <string name="interstitial_loading_failed">"Interstitial loading failed."</string>
+    <!--UI-->
+    <string name="load_interstitial_ad">Load Interstitial Ad</string>
+    <string name="load_interstitial_video">Load Interstitial Video</string>
+    <string name="load_rewarded_video">Load Rewarded Video</string>
+    <string name="show_interstitial_ad">Show Interstitial Ad</string>
+    <string name="show_interstitial_video">Show Interstitial video</string>
+    <string name="show_rewarded_video">Show rewarded video</string>
+</resources>
