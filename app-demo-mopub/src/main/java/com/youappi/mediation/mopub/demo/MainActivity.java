@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,10 +16,11 @@ import com.mopub.mobileads.MoPubRewardedVideoListener;
 import com.mopub.mobileads.MoPubRewardedVideos;
 import com.youappi.sdk.mediation.mopub.YouAppiMopub;
 
+import java.util.Locale;
 import java.util.Set;
 
 @SuppressWarnings("FieldCanBeLocal")
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, MoPubRewardedVideoListener, MoPubInterstitial.InterstitialAdListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String UNIT_ID_REWARDED_VIDEO = "5aafbe7f552842d48373f082bd585aa9";
     public static final String UNIT_ID_INTERSTITIAL_AD = "2fec087170f348e28207f0a0cb9e890b";
@@ -30,15 +32,98 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button loadRewardedVideo;
     private Button loadInterstitialVideo;
     private Button loadInterstitialAd;
-    private Button showInterstitialVideo;
-    private Button showRewardedVideo;
-    private Button showInterstitialAd;
+    private ProgressBar progressBarRewardedVideo;
+    private ProgressBar progressBarInterstitialVideo;
+    private ProgressBar progressBarInterstitialAd;
 
-    private View spinner;
-    private boolean rewardedVideoReady;
-    private boolean rewardedVideoShown;
-    private boolean interstitialVideoShown;
-    private boolean interstitialAdShown;
+    private MoPubRewardedVideoListener rewardedVideoListener = new MoPubRewardedVideoListener() {
+        @Override
+        public void onRewardedVideoLoadSuccess(@NonNull String adUnitId) {
+            setButtonState(loadRewardedVideo, ButtonState.SHOW);
+        }
+
+        @Override
+        public void onRewardedVideoLoadFailure(@NonNull String adUnitId, @NonNull MoPubErrorCode errorCode) {
+            setButtonState(loadRewardedVideo, ButtonState.LOAD);
+            showToast(getString(R.string.rewarded_loading_failed));
+        }
+
+        @Override
+        public void onRewardedVideoStarted(@NonNull String adUnitId) {
+
+        }
+
+        @Override
+        public void onRewardedVideoPlaybackError(@NonNull String adUnitId, @NonNull MoPubErrorCode errorCode) {
+
+        }
+
+        @Override
+        public void onRewardedVideoClosed(@NonNull String adUnitId) {
+
+        }
+
+        @Override
+        public void onRewardedVideoCompleted(@NonNull Set<String> adUnitIds, @NonNull MoPubReward reward) {
+
+        }
+    };
+
+    private MoPubInterstitial.InterstitialAdListener InterstitialVideoListener = new MoPubInterstitial.InterstitialAdListener() {
+        @Override
+        public void onInterstitialLoaded(MoPubInterstitial interstitial) {
+            setButtonState(loadInterstitialVideo, ButtonState.SHOW);
+        }
+
+        @Override
+        public void onInterstitialFailed(MoPubInterstitial interstitial, MoPubErrorCode errorCode) {
+            setButtonState(loadInterstitialVideo, ButtonState.LOAD);
+            showToast(getString(R.string.interstitial_loading_failed));
+        }
+
+        @Override
+        public void onInterstitialShown(MoPubInterstitial interstitial) {
+
+        }
+
+        @Override
+        public void onInterstitialClicked(MoPubInterstitial interstitial) {
+
+        }
+
+        @Override
+        public void onInterstitialDismissed(MoPubInterstitial interstitial) {
+
+        }
+    };
+
+    private MoPubInterstitial.InterstitialAdListener interstitialAdListener = new MoPubInterstitial.InterstitialAdListener() {
+        @Override
+        public void onInterstitialLoaded(MoPubInterstitial interstitial) {
+            setButtonState(loadInterstitialAd, ButtonState.SHOW);
+        }
+
+        @Override
+        public void onInterstitialFailed(MoPubInterstitial interstitial, MoPubErrorCode errorCode) {
+            setButtonState(loadInterstitialAd, ButtonState.LOAD);
+            showToast(getString(R.string.interstitial_loading_failed));
+        }
+
+        @Override
+        public void onInterstitialShown(MoPubInterstitial interstitial) {
+
+        }
+
+        @Override
+        public void onInterstitialClicked(MoPubInterstitial interstitial) {
+
+        }
+
+        @Override
+        public void onInterstitialDismissed(MoPubInterstitial interstitial) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,187 +132,101 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MoPubRewardedVideos.initializeRewardedVideo(this);
 
-        loadRewardedVideo = findViewById(R.id.load_rewarded);
-        showRewardedVideo = findViewById(R.id.show_rewarded);
-        loadInterstitialVideo = findViewById(R.id.load_interstitial_video);
-        showInterstitialVideo = findViewById(R.id.show_interstitial_video);
-        loadInterstitialAd = findViewById(R.id.load_interstitial_ad);
-        showInterstitialAd = findViewById(R.id.show_interstitial_ad);
+        loadRewardedVideo = findViewById(R.id.rewarded_btn);
+        loadInterstitialVideo = findViewById(R.id.interstitial_video_btn);
+        loadInterstitialAd = findViewById(R.id.interstitial_ad_btn);
         loadRewardedVideo.setOnClickListener(this);
-        showRewardedVideo.setOnClickListener(this);
         loadInterstitialVideo.setOnClickListener(this);
-        showInterstitialVideo.setOnClickListener(this);
         loadInterstitialAd.setOnClickListener(this);
-        showInterstitialAd.setOnClickListener(this);
+        progressBarRewardedVideo = findViewById(R.id.rewarded_spinner);
+        progressBarInterstitialVideo = findViewById(R.id.interstitial_video_spinner);
+        progressBarInterstitialAd = findViewById(R.id.interstitial_ad_spinner);
 
-        spinner = findViewById(R.id.spinner_layout);
-        spinner.setVisibility(View.GONE);
-
+        setButtonState(loadRewardedVideo, ButtonState.LOAD);
+        setButtonState(loadInterstitialVideo, ButtonState.LOAD);
+        setButtonState(loadInterstitialAd, ButtonState.LOAD);
 
         moPubInterstitial = new MoPubInterstitial(this, UNIT_ID_INTERSTITIAL_AD);
         moPubInterstitialVideo = new MoPubInterstitial(this, UNIT_ID_INTERSTITIAL_VIDEO);
-        moPubInterstitial.setInterstitialAdListener(this);
-        MoPubRewardedVideos.setRewardedVideoListener(this);
+        moPubInterstitial.setInterstitialAdListener(interstitialAdListener);
+        moPubInterstitialVideo.setInterstitialAdListener(InterstitialVideoListener);
+        MoPubRewardedVideos.setRewardedVideoListener(rewardedVideoListener);
 
         TextView moatState = findViewById(R.id.moat_state);
+
         if (YouAppiMopub.isMoat()) {
-            moatState.setText("Trackers: Moat");
+            moatState.setText(String.format(Locale.US, "%s: %s", getString(R.string.trackers), getString(R.string.moat)));
         } else {
-            moatState.setText("Trackers: None");
+            moatState.setText(String.format(Locale.US, "%s: %s", getString(R.string.trackers), getString(R.string.none)));
         }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.load_interstitial_ad:
-                moPubInterstitial.load();
-                interstitialAdShown = false;
-                showSpinner(true);
+            case R.id.interstitial_ad_btn:
+                if (moPubInterstitial.isReady()) {
+                    moPubInterstitial.show();
+                } else {
+                    moPubInterstitial.load();
+                    setButtonState(loadInterstitialAd, ButtonState.LOADING);
+                }
                 break;
-            case R.id.show_interstitial_ad:
-                moPubInterstitial.show();
+            case R.id.rewarded_btn:
+                if (MoPubRewardedVideos.hasRewardedVideo(UNIT_ID_REWARDED_VIDEO)) {
+                    MoPubRewardedVideos.showRewardedVideo(UNIT_ID_REWARDED_VIDEO);
+                } else {
+                    MoPubRewardedVideos.loadRewardedVideo(UNIT_ID_REWARDED_VIDEO);
+                    setButtonState(loadRewardedVideo, ButtonState.LOADING);
+                }
                 break;
-            case R.id.load_rewarded:
-                MoPubRewardedVideos.loadRewardedVideo(UNIT_ID_REWARDED_VIDEO);
-                showSpinner(true);
-                rewardedVideoShown = false;
-                break;
-            case R.id.show_rewarded:
-                MoPubRewardedVideos.showRewardedVideo(UNIT_ID_REWARDED_VIDEO);
-                break;
-            case R.id.load_interstitial_video:
-                moPubInterstitialVideo.load();
-                interstitialVideoShown = false;
-                showSpinner(true);
-                break;
-            case R.id.show_interstitial_video:
-                moPubInterstitialVideo.show();
+            case R.id.interstitial_video_btn:
+                if (moPubInterstitialVideo.isReady()) {
+                    moPubInterstitialVideo.show();
+                } else {
+                    moPubInterstitialVideo.load();
+                    setButtonState(loadInterstitialVideo, ButtonState.LOADING);
+                }
                 break;
         }
-    }
-
-    private void updateUiState() {
-        showInterstitialAd.setEnabled(!interstitialAdShown && moPubInterstitial.isReady());
-        showInterstitialVideo.setEnabled(!interstitialVideoShown && moPubInterstitialVideo.isReady());
-        showRewardedVideo.setEnabled(rewardedVideoReady && !rewardedVideoShown);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        updateUiState();
-    }
-
-    private void showSpinner(boolean showSpinner) {
-        if (spinner != null) {
-            spinner.setVisibility(showSpinner ? View.VISIBLE : View.GONE);
-        }
-    }
-
-    @Override
-    public void onRewardedVideoLoadSuccess(@NonNull String adUnitId) {
-        rewardedVideoReady = true;
-        updateUiState();
-        showSpinner(false);
-    }
-
-    @Override
-    public void onRewardedVideoLoadFailure(@NonNull String adUnitId, @NonNull MoPubErrorCode errorCode) {
-        rewardedVideoReady = false;
-        updateUiState();
-        showSpinner(false);
-        showToast(getString(R.string.rewarded_loading_failed));
-    }
-
-    @Override
-    public void onRewardedVideoStarted(@NonNull String adUnitId) {
-        rewardedVideoReady = false;
-        rewardedVideoShown = true;
-        updateUiState();
-    }
-
-    @Override
-    public void onRewardedVideoPlaybackError(@NonNull String adUnitId, @NonNull MoPubErrorCode errorCode) {
-        rewardedVideoReady = false;
-        updateUiState();
-    }
-
-    @Override
-    public void onRewardedVideoClosed(@NonNull String adUnitId) {
-        rewardedVideoReady = false;
-        rewardedVideoShown = true;
-        updateUiState();
-    }
-
-    @Override
-    public void onRewardedVideoCompleted(@NonNull Set<String> adUnitIds, @NonNull MoPubReward reward) {
-        rewardedVideoReady = false;
-        rewardedVideoShown = true;
-        updateUiState();
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
-
-    @Override
-    public void onInterstitialLoaded(MoPubInterstitial interstitial) {
-        updateUiState();
-        showSpinner(false);
-    }
-
-    @Override
-    public void onInterstitialFailed(MoPubInterstitial interstitial, MoPubErrorCode errorCode) {
-        updateUiState();
-        showSpinner(false);
-        showToast(getString(R.string.interstitial_loading_failed));
-    }
-
-    @Override
-    public void onInterstitialShown(MoPubInterstitial interstitial) {
-        if (interstitial == moPubInterstitial) {
-            interstitialAdShown = true;
-        }
-        if (interstitial == moPubInterstitialVideo) {
-            interstitialVideoShown = true;
-        }
-        updateUiState();
-    }
-
-    @Override
-    public void onInterstitialClicked(MoPubInterstitial interstitial) {
-        if (interstitial == moPubInterstitial) {
-            interstitialAdShown = true;
-        }
-        if (interstitial == moPubInterstitialVideo) {
-            interstitialVideoShown = true;
-        }
-        updateUiState();
-    }
-
-    @Override
-    public void onInterstitialDismissed(MoPubInterstitial interstitial) {
-        if (interstitial == moPubInterstitial) {
-            interstitialAdShown = true;
-        }
-        if (interstitial == moPubInterstitialVideo) {
-            interstitialVideoShown = true;
-        }
-        updateUiState();
     }
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onBackPressed() {
-        if (spinner.getVisibility()!=View.GONE){
-            showSpinner(false);
-        } else {
-            super.onBackPressed();
+    enum ButtonState {
+        LOAD, LOADING, SHOW, ERROR
+    }
+
+    void setButtonState(Button button, ButtonState buttonState) {
+        String buttonText = null;
+        switch (button.getId()) {
+            case R.id.rewarded_btn:
+                buttonText = getString(R.string.rewarded_video);
+                progressBarRewardedVideo.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
+                break;
+            case R.id.interstitial_video_btn:
+                buttonText = getString(R.string.interstitial_video);
+                progressBarInterstitialVideo.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
+                break;
+            case R.id.interstitial_ad_btn:
+                buttonText = getString(R.string.interstitial_ad);
+                progressBarInterstitialAd.setVisibility(buttonState == ButtonState.LOADING ? View.VISIBLE : View.INVISIBLE);
+                break;
+        }
+
+        switch (buttonState) {
+            case LOAD:
+                button.setText(String.format(Locale.getDefault(), "%s %s", getString(R.string.load), buttonText));
+                break;
+            case LOADING:
+                button.setText(String.format(Locale.getDefault(), "%s %s", getString(R.string.loading), buttonText));
+                break;
+            case SHOW:
+                button.setText(String.format(Locale.getDefault(), "%s %s", getString(R.string.show), buttonText));
+                break;
         }
     }
+
 }

@@ -11,41 +11,68 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/load_rewarded"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Load Rewarded Video" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/show_rewarded"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show rewarded video" />
+            <ProgressBar
+                android:id="@+id/rewarded_spinner"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
-        <Button
-            android:id="@+id/load_interstitial_video"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Load Interstitial Video" />
+            <Button
+                android:id="@+id/rewarded_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rewarded_video" />
 
-        <Button
-            android:id="@+id/show_interstitial_video"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show Interstitial video" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/load_interstitial_ad"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Load Interstitial Ad" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/show_interstitial_ad"
+            <ProgressBar
+                android:id="@+id/interstitial_video_spinner"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/interstitial_video_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/interstitial_video" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Interstitial Ad" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/interstitial_ad_spinner"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/interstitial_ad_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/interstitial_ad" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -57,7 +84,7 @@
         android:layout_margin="2dp"
         android:textColor="@android:color/black"
         android:textSize="12dp"
-        tools:ignore="RtlHardcoded" />
+        tools:ignore="RtlHardcoded,SpUsage" />
 
     <TextView
         android:id="@+id/moat_state"
@@ -68,23 +95,7 @@
         android:text=""
         android:textColor="@android:color/black"
         android:textSize="12dp"
-        tools:ignore="RtlHardcoded" />
-
-    <FrameLayout
-        android:id="@+id/spinner_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#800f0f0f"
-        android:visibility="gone">
-
-        <ProgressBar
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center" />
-
-    </FrameLayout>
+        tools:ignore="RtlHardcoded,SpUsage" />
 
 </FrameLayout>
 

@@ -4,10 +4,13 @@
     <string name="rewarded_loading_failed">Rewarded loading failed.</string>
     <string name="interstitial_loading_failed">"Interstitial loading failed."</string>
     <!--UI-->
-    <string name="load_interstitial_ad">Load Interstitial Ad</string>
-    <string name="load_interstitial_video">Load Interstitial Video</string>
-    <string name="load_rewarded_video">Load Rewarded Video</string>
-    <string name="show_interstitial_ad">Show Interstitial Ad</string>
-    <string name="show_interstitial_video">Show Interstitial video</string>
-    <string name="show_rewarded_video">Show rewarded video</string>
+    <string name="rewarded_video">Rewarded Video ad</string>
+    <string name="interstitial_video">Interstitial Video ad</string>
+    <string name="interstitial_ad">Interstitial ad</string>
+    <string name="load">Load</string>
+    <string name="loading">Loading</string>
+    <string name="show">Show</string>
+    <string name="trackers">Trackers:</string>
+    <string name="moat">Moat</string>
+    <string name="none">None</string>
 </resources>
