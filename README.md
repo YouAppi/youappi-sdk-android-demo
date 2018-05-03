@@ -18,4 +18,5 @@ Load the project with Android Studio and Gradle will do the rest.
 
 ### How do I run? ###
 
-Select from the run menu the desired app and press the run button.
+* On the project run menu select the desired demo app you would like to run.
+* Press the run button and wait for the demo app to load.
