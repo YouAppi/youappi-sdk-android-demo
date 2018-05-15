@@ -47,7 +47,7 @@ public class DemoInterstitialVideoAdListener implements YAInterstitialVideoAd.In
     }
 
     @Override
-    public void onCardClick(String s) {
+    public void onAdClick(String s) {
 
     }
 
@@ -80,5 +80,10 @@ public class DemoInterstitialVideoAdListener implements YAInterstitialVideoAd.In
     @Override
     public void onAdEnded(String s) {
         activity.setButtonState(activity.buttonInterstitialVideo, MainActivity.ButtonState.LOAD);
+    }
+
+    @Override
+    public void onAdLeftApplication(String s) {
+
     }
 }

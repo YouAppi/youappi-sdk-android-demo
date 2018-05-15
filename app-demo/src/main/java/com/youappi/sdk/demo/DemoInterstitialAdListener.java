@@ -34,7 +34,7 @@ public class DemoInterstitialAdListener implements YAInterstitialAd.Interstitial
     }
 
     @Override
-    public void onCardClick(String s) {
+    public void onAdClick(String s) {
 
     }
 
@@ -67,5 +67,10 @@ public class DemoInterstitialAdListener implements YAInterstitialAd.Interstitial
     @Override
     public void onAdEnded(String s) {
         activity.setButtonState(activity.buttonInterstitialAd, MainActivity.ButtonState.LOAD);
+    }
+
+    @Override
+    public void onAdLeftApplication(String s) {
+
     }
 }

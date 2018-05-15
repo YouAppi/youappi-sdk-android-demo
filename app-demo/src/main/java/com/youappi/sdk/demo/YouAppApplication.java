@@ -18,6 +18,6 @@ public class YouAppApplication extends Application {
   public void onCreate() {
     super.onCreate();
 
-    YouAPPi.init(this, DEMO_TOKEN);
+    YouAPPi.init(this, DEMO_TOKEN, true);
   }
 }

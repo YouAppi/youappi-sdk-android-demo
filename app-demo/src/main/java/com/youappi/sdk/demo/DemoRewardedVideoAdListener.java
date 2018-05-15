@@ -52,7 +52,7 @@ public class DemoRewardedVideoAdListener implements RewardedVideoAdListener {
     }
 
     @Override
-    public void onCardClick(String s) {
+    public void onAdClick(String s) {
 
     }
 
@@ -85,5 +85,10 @@ public class DemoRewardedVideoAdListener implements RewardedVideoAdListener {
     @Override
     public void onAdEnded(String s) {
         activity.setButtonState(activity.buttonRewardedVideo, MainActivity.ButtonState.LOAD);
+    }
+
+    @Override
+    public void onAdLeftApplication(String s) {
+
     }
 }
