@@ -29,14 +29,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // MoPub SDK dependency
-    implementation 'com.mopub:mopub-sdk:4.16.0@aar'
-    api 'com.mopub:mopub-sdk-rewardedvideo:4.12.0'//temporary
+    implementation 'com.mopub:mopub-sdk:5.0.0@aar'
+    api 'com.mopub:mopub-sdk-rewardedvideo:5.0.0'//temporary
 
     // YouAppi SDK and MoPub adapter dependency
     implementation 'com.youappi.sdk:youappi-sdk-android-mopub-moat:4.1.1'
