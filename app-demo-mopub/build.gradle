@@ -36,7 +36,6 @@ dependencies {
 
     // MoPub SDK dependency
     implementation 'com.mopub:mopub-sdk:5.0.0@aar'
-    api 'com.mopub:mopub-sdk-rewardedvideo:5.0.0'//temporary
 
     // YouAppi SDK and MoPub adapter dependency
     implementation 'com.youappi.sdk:youappi-sdk-android-mopub-moat:4.1.1'
