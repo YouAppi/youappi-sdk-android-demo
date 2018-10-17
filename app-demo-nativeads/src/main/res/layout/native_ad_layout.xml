@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.youappi.sdk.nativeads.views.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nativead_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray">
+
+    <LinearLayout
+        android:id="@+id/na_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded">
+
+            <ImageView
+                android:id="@id/nativead_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:tag="na_icon"
+                tools:ignore="ContentDescription,RtlHardcoded"
+                tools:src="@drawable/ic_launcher_foreground" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:id="@id/nativead_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:ellipsize="end"
+                    android:gravity="left"
+                    android:lines="1"
+                    android:tag="na_title"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    tools:text="title" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|bottom"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="2dp"
+                        android:src="@drawable/youappi_ads_star"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@id/nativead_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        tools:text="fdfds" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@id/nativead_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:textColor="#000000"
+                    tools:text="TextView" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@id/nativead_media"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:tag="na_media"
+            tools:ignore="ContentDescription" />
+
+        <Button
+            android:id="@id/nativead_cta"
+            android:layout_width="104dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:tag="na_action"
+            android:text="install"
+            android:textColor="#ffffff"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@id/nativead_opt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="18dp"
+        android:textColor="#aa000000"
+        tools:ignore="HardcodedText,RtlHardcoded"/>
+
+</com.youappi.sdk.nativeads.views.NativeAdView>
