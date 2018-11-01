@@ -1,5 +1,6 @@
 package com.youappi.sdk.nativeads.demo;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +37,7 @@ public class MainActivity extends Activity {
         nativeAdViewContainer.setVisibility(View.GONE);
 
         buttonLoadAd.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
 

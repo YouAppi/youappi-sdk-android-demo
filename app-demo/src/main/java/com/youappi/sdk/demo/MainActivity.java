@@ -1,5 +1,6 @@
 package com.youappi.sdk.demo;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
         setButtonState(buttonInterstitialAd, ButtonState.LOAD);
     }
 
+    @SuppressLint("SetTextI18n")
     void setButtonState(Button button, ButtonState buttonState) {
         String buttonText = null;
         switch (button.getId()) {
