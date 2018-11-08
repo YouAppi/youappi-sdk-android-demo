@@ -3,13 +3,17 @@ package com.youappi.mediation.mopub.demo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mopub.common.MoPub;
 import com.mopub.common.MoPubReward;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.SdkInitializationListener;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
@@ -20,7 +24,7 @@ import java.util.Locale;
 import java.util.Set;
 
 @SuppressWarnings("FieldCanBeLocal")
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, SdkInitializationListener {
 
     public static final String UNIT_ID_REWARDED_VIDEO = "5aafbe7f552842d48373f082bd585aa9";
     public static final String UNIT_ID_INTERSTITIAL_AD = "2fec087170f348e28207f0a0cb9e890b";
@@ -55,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onRewardedVideoPlaybackError(@NonNull String adUnitId, @NonNull MoPubErrorCode errorCode) {
+
+        }
+
+        @Override
+        public void onRewardedVideoClicked(@NonNull String adUnitId) {
 
         }
 
@@ -126,11 +135,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     };
 
     @Override
+    public void onInitializationFinished() {
+        Log.i(MainActivity.class.getSimpleName(),"Mopub initialized");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MoPubRewardedVideos.initializeRewardedVideo(this);
+//        MoPubRewardedVideos.initializeRewardedVideo(this);
+
+        SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(UNIT_ID_REWARDED_VIDEO).build();
+        MoPub.initializeSdk(this, sdkConfiguration, this);
 
         loadRewardedVideo = findViewById(R.id.rewarded_btn);
         loadInterstitialVideo = findViewById(R.id.interstitial_video_btn);
@@ -194,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
 
     enum ButtonState {
         LOAD, LOADING, SHOW, ERROR
