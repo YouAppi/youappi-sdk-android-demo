@@ -2,15 +2,10 @@
 
 This repository contains 3 Android demo apps showing how to use YouAppi's Android SDK:
 
-* **AppDemo** - A demo app showing how to use YouAppi's SDK
-* **AppDemoAdMob** - A demo app showing how to use YouAppi's SDK with AdMob adapter.
-* **AppdDemoMoPub** - A demo app showing how to use YouApp'd SDK with MoPub adapter.
-
-Each app includes 3 buttons for showing ads for the following each ad unit types:
-
-* Rewarded Video
-* Interstitial Video
-* Interstitial Ad
+* **AppDemo** - shows how to use YouAppi's SDK
+* **AppDemoAdMob** - shows how to use YouAppi's SDK with AdMob adapter.
+* **AppdDemoMoPub** - shows how to use YouApp'd SDK with MoPub adapter.
+* **app-demo-nativeads** – Shows how to use YouAppi’s SDK Native Ads
 
 ### How do I get set up? ###
 
