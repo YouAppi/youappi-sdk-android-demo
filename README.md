@@ -1,6 +1,6 @@
 ### What is this repository for? ###
 
-This repository contains 3 Android demo apps showing how to use YouAppi's Android SDK:
+This repository contains 4 Android demo apps showing how to use YouAppi's Android SDK:
 
 * **AppDemo** - shows how to use YouAppi's SDK
 * **AppDemoAdMob** - shows how to use YouAppi's SDK with AdMob adapter.
