@@ -9,18 +9,23 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.youappi.sdk.nativeads.AdRequest;
-import com.youappi.sdk.nativeads.ErrorCode;
 import com.youappi.sdk.nativeads.NativeAd;
-import com.youappi.sdk.nativeads.NativeAdLoader;
+import com.youappi.sdk.nativeads.NativeAdView;
+import com.youappi.sdk.nativeads.NativeStaticAdsRenderer;
+import com.youappi.sdk.nativeads.NativeTypes;
+import com.youappi.sdk.nativeads.StaticNativeAd;
+import com.youappi.sdk.nativeads.StaticNativeAdLoader;
+import com.youappi.sdk.nativeads.ViewMapper;
 import com.youappi.sdk.nativeads.listeners.NativeAdListener;
 import com.youappi.sdk.nativeads.listeners.NativeAdResponseListener;
-import com.youappi.sdk.nativeads.views.NativeAdView;
 
 public class MainActivity extends Activity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
     TextView textState;
+
+    private NativeStaticAdsRenderer nativeStaticAdsRenderer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,13 @@ public class MainActivity extends Activity {
         final View nativeAdViewContainer = findViewById(R.id.nativeAdViewContainer);
         nativeAdViewContainer.setVisibility(View.GONE);
 
+        nativeStaticAdsRenderer = new NativeStaticAdsRenderer(new ViewMapper.Builder()
+                .setMediaView(findViewById(R.id.nativead_media))
+                .setIconView(findViewById(R.id.nativead_icon))
+                .setCtaButtonView(findViewById(R.id.nativead_cta))
+                .setTitleView(findViewById(R.id.nativead_title))
+                .setPrivacyView(findViewById(R.id.nativead_opt)).build());
+
         buttonLoadAd.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -44,7 +56,7 @@ public class MainActivity extends Activity {
                 textState.setText("Loading Native Ad");
                 nativeAdViewContainer.setVisibility(View.GONE);
 
-                NativeAdLoader nativeAdLoader = new NativeAdLoader.Builder(
+                StaticNativeAdLoader nativeAdLoader = new StaticNativeAdLoader.Builder(
                         MainActivity.this,
                         "821cfa77-3127-42b5-9e6b-0afcecf77c67",
                         "nativeAdTest")
@@ -52,15 +64,14 @@ public class MainActivity extends Activity {
                             @Override
                             public void onNativeAdResponse(NativeAd nativeAd) {
                                 final NativeAdView nativeAdView = findViewById(R.id.includedLayout);
-                                nativeAdView.bind(nativeAd);
-
+                                nativeStaticAdsRenderer.renderAd(nativeAdView, (StaticNativeAd) nativeAd);
                                 textState.setText("Ad was loaded");
                                 nativeAdViewContainer.setVisibility(View.VISIBLE);
                             }
                         })
                         .setNativeAdListener(new NativeAdListener() {
                             @Override
-                            public void onFailure(ErrorCode errorCode, Exception e) {
+                            public void onFailure(NativeTypes.ErrorCode errorCode, Exception e) {
                                 Log.e(TAG, "Failed in native request: " + errorCode, e);
                                 textState.setText("Failed loading Ad");
                             }
