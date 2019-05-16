@@ -16,10 +16,10 @@
 #   public *;
 #}
 -keep class com.google.gson.**{ *;}
-	-keep class com.google.android.gms.**{*;}
-	-keep class com.youappi.ai.sdk.**{*;}
-	-keep interface com.youappi.ai.sdk.**{*;}
-	-keep enum com.youappi.ai.sdk.**{*;}
-	-keepclassmembers class * {
+-keep class com.google.android.gms.**{*;}
+-keep class com.youappi.sdk.**{*;}
+-keep interface com.youappi.sdk.**{*;}
+-keep enum com.youappi.sdk.**{*;}
+-keepclassmembers class * {
 		@android.webkit.JavascriptInterface <methods>;
-	}
+}
