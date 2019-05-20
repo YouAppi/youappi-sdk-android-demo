@@ -17,7 +17,8 @@ public class YouAppApplication extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
-
-    YouAPPi.init(this, DEMO_TOKEN, true);
+    boolean consent = true;
+    boolean gdpr = true;
+    YouAPPi.init(this, DEMO_TOKEN, consent, gdpr);
   }
 }
