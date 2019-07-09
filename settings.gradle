@@ -1,1 +1,1 @@
-include ':app-demo', ':app-demo-admob', ':app-demo-mopub', ':app-demo-nativeads', ':app-demo-nativevideo'
+include ':app-demo', ':app-demo-admob', ':app-demo-mopub', ':app-demo-nativeads-static', ':app-demo-nativeads-video'
