@@ -15,11 +15,11 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.youappi.demo.admob.R;
 import com.youappi.sdk.YouAPPi;
 import com.youappi.sdk.mediation.admob.YouAppiAdmob;
 import com.youappi.sdk.mediation.admob.YouAppiInterstitialAd;
 import com.youappi.sdk.mediation.admob.YouAppiInterstitialVideo;
-import com.youappi.sdk.mediation.admob.demo.R;
 
 import java.util.Locale;
 
