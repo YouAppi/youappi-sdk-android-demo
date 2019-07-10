@@ -4,8 +4,9 @@ This repository contains 4 Android demo apps showing how to use YouAppi's Androi
 
 * **app-demo** - shows how to use YouAppi's SDK
 * **app-demo-admob** - shows how to use YouAppi's SDK with AdMob adapter.
-* **addp-demo-mopub** - shows how to use YouApp'd SDK with MoPub adapter.
-* **app-demo-nativeads** – Shows how to use YouAppi’s SDK Native Ads
+* **app-demo-mopub** - shows how to use YouApp'd SDK with MoPub adapter.
+* **app-demo-nativeads-static** – Shows how to use YouAppi’s SDK Native Static Ads
+* **app-demo-nativeads-video** – Shows how to use YouAppi’s SDK Native Video Ads
 
 ### How do I get set up? ###
 
