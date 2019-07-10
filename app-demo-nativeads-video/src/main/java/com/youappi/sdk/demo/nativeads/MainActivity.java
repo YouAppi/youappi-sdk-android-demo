@@ -20,16 +20,17 @@ public class MainActivity extends Activity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    View advView;
-    View advView2;
-    View advView3;
-    NativeVideoAdsRenderer nativeVideoAdsRenderer;
-    int counter = 0;
+    private View advView;
+    private View advView2;
+    private View advView3;
+    private NativeVideoAdsRenderer nativeVideoAdsRenderer;
+    private int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         advView = findViewById(R.id.adv_view);
         advView2 = findViewById(R.id.adv_view2);
         advView3 = findViewById(R.id.adv_view3);
