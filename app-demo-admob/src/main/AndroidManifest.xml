@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:appComponentFactory">
         <activity android:name="com.youappi.medaition.admob.demo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
