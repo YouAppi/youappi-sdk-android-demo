@@ -35,7 +35,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
     // Google AdMob SDK dependency
-    implementation 'com.google.android.gms:play-services-ads:18.0.0'
+    implementation 'com.google.android.gms:play-services-ads:17.0.0'
 
     // YouAppi SDK and AdMob adapter dependency
     implementation 'com.youappi.sdk:youappi-sdk-android-admob-moat:4.4.1'
