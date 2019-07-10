@@ -1,4 +1,4 @@
-package com.youappi.test.app_demo_nativevideo;
+package com.youappi.sdk.demo.nativeads;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,9 +9,10 @@ import android.widget.Button;
 import com.youappi.sdk.nativeads.AdRequest;
 import com.youappi.sdk.nativeads.NativeAd;
 import com.youappi.sdk.nativeads.NativeTypes;
-
 import com.youappi.sdk.nativeads.listeners.NativeAdListener;
 import com.youappi.sdk.nativeads.listeners.NativeAdResponseListener;
+import com.youappi.sdk.nativeads.nativeads.BuildConfig;
+import com.youappi.sdk.nativeads.nativeads.R;
 import com.youappi.sdk.nativeads.video.NativeVideoAdsRenderer;
 import com.youappi.sdk.nativeads.video.VideoNativeAd;
 import com.youappi.sdk.nativeads.video.VideoNativeAdLoader;
@@ -30,24 +31,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        advView = findViewById(R.id.adv_view);
-        advView2 = findViewById(R.id.adv_view2);
-        advView3 = findViewById(R.id.adv_view3);
+        setContentView(com.youappi.sdk.nativeads.nativeads.R.layout.activity_main);
+        advView = findViewById(com.youappi.sdk.nativeads.nativeads.R.id.adv_view);
+        advView2 = findViewById(com.youappi.sdk.nativeads.nativeads.R.id.adv_view2);
+        advView3 = findViewById(com.youappi.sdk.nativeads.nativeads.R.id.adv_view3);
 
-        Button envButton = findViewById(R.id.env);
-        if (BuildConfig.DEBUG) {
-            envButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    EnvironmentChanger.openEnvironment(MainActivity.this);
-                }
-            });
-        } else {
-            envButton.setVisibility(View.GONE);
-        }
-
-        final Button buttonLoadAd = findViewById(R.id.buttonLoadAd);
+        final Button buttonLoadAd = findViewById(com.youappi.sdk.nativeads.nativeads.R.id.buttonLoadAd);
 
         buttonLoadAd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,13 +45,13 @@ public class MainActivity extends Activity {
             }
         });
 
-        VideoViewMapper.Builder builder = new VideoViewMapper.Builder(R.layout.native_ad_layout);
-        builder.setTitleViewId(R.id.nativead_title)
-                .setMediaViewId(R.id.nativead_media)
-                .setIconViewId(R.id.nativead_icon)
-                .setCtaViewId(R.id.nativead_cta)
-                .setDescriptionViewId(R.id.nativead_description)
-                .setRatingViewId(R.id.nativead_rating)
+        VideoViewMapper.Builder builder = new VideoViewMapper.Builder(com.youappi.sdk.nativeads.nativeads.R.layout.native_ad_layout);
+        builder.setTitleViewId(com.youappi.sdk.nativeads.nativeads.R.id.nativead_title)
+                .setMediaViewId(com.youappi.sdk.nativeads.nativeads.R.id.nativead_media)
+                .setIconViewId(com.youappi.sdk.nativeads.nativeads.R.id.nativead_icon)
+                .setCtaViewId(com.youappi.sdk.nativeads.nativeads.R.id.nativead_cta)
+                .setDescriptionViewId(com.youappi.sdk.nativeads.nativeads.R.id.nativead_description)
+                .setRatingViewId(com.youappi.sdk.nativeads.nativeads.R.id.nativead_rating)
                 .setRatingIconViewId(R.id.nativead_rating_icon);
         nativeVideoAdsRenderer = new NativeVideoAdsRenderer(builder.build());
 
@@ -96,12 +85,12 @@ public class MainActivity extends Activity {
                 .setNativeAdListener(new NativeAdListener() {
                     @Override
                     public void onFailure(NativeTypes.ErrorCode errorCode, Exception e) {
-                        Log.e(TAG, "ad failiure. code: " + errorCode.name() + " exception: " + e.getMessage());
+                        Log.e(TAG, "Ad failure. Error code: " + errorCode.name(), e);
                     }
 
                     @Override
                     public void onAdClicked() {
-                        Log.e(TAG, "ad clicked");
+                        Log.e(TAG, "Ad clicked");
                     }
 
                     @Override

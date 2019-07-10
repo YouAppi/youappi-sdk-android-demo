@@ -1,4 +1,4 @@
-package com.youappi.sdk.nativeads.demo;
+package com.youappi.sdk.demo.nativeads;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -16,6 +16,7 @@ import com.youappi.sdk.nativeads.NativeTypes;
 import com.youappi.sdk.nativeads.StaticNativeAd;
 import com.youappi.sdk.nativeads.StaticNativeAdLoader;
 import com.youappi.sdk.nativeads.ViewMapper;
+import com.youappi.sdk.nativeads.demo.R;
 import com.youappi.sdk.nativeads.listeners.NativeAdListener;
 import com.youappi.sdk.nativeads.listeners.NativeAdResponseListener;
 

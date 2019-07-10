@@ -1,4 +1,4 @@
-package com.youappi.medaition.admob.demo;
+package com.youappi.sdk.demo.admob;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +19,7 @@ import com.youappi.sdk.YouAPPi;
 import com.youappi.sdk.mediation.admob.YouAppiAdmob;
 import com.youappi.sdk.mediation.admob.YouAppiInterstitialAd;
 import com.youappi.sdk.mediation.admob.YouAppiInterstitialVideo;
+import com.youappi.sdk.mediation.admob.demo.R;
 
 import java.util.Locale;
 

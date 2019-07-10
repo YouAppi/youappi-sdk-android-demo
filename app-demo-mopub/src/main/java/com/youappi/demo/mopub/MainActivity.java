@@ -1,4 +1,4 @@
-package com.youappi.mediation.mopub.demo;
+package com.youappi.demo.mopub;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +18,7 @@ import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
 import com.mopub.mobileads.MoPubRewardedVideos;
+import com.youappi.mediation.mopub.demo.R;
 import com.youappi.sdk.mediation.mopub.YouAppiMopub;
 
 import java.util.Locale;
