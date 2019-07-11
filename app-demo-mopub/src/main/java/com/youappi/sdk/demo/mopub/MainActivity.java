@@ -1,4 +1,4 @@
-package com.youappi.demo.mopub;
+package com.youappi.sdk.demo.mopub;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
