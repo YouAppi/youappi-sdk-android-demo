@@ -16,3 +16,8 @@ Load the project with Android Studio and Gradle will do the rest.
 
 * On the project run menu select the desired demo app you would like to run.
 * Press the run button and wait for the demo app to load.
+
+
+### How do I get the latest SDK? ###
+* Please make sure to take the assets from the support website. 
+* Note that the demo apps listed here do not always contain the updated SDK versions.
