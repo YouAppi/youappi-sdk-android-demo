@@ -22,12 +22,10 @@ Load the project with Android Studio and Gradle will do the rest.
 * **Please note** that the demo apps **might not** contain the latest SDK.
 * You can download the latest SDK from our support web site:
 
-    SDK: [SDK Support](http://support.youappi.com/knowledgebase/android-sdk/)
+* [Interstitial & Rewarded SDK](http://support.youappi.com/knowledgebase/android-sdk/)
+* [Native Ads Static](http://support.youappi.com/knowledgebase/android-sdk-native-ads/)
+* [Native Ads Video](http://support.youappi.com/knowledgebase/android-sdk-native-video/)
+* [Admob Adapter](http://support.youappi.com/knowledgebase/android-sdk-admob-adapter/)
+* [Mopub Adapter](http://support.youappi.com/knowledgebase/android-sdk-mopub-adapter/)
 
-    AdMob: [Admob Adapter](http://support.youappi.com/knowledgebase/android-sdk-admob-adapter/)
 
-    MoPub: [Mopub Adapter](http://support.youappi.com/knowledgebase/android-sdk-mopub-adapter/)
-
-    Native Static: [Native Static](http://support.youappi.com/knowledgebase/android-sdk-native-ads/)
-
-    Native Video: [Native Video](http://support.youappi.com/knowledgebase/android-sdk-native-video/)
