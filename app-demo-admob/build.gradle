@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.youappi.sdk.mediation.admob.demo"
+        applicationId "com.youappi.sdk.demo.admob"
         minSdkVersion 22
         targetSdkVersion 28
         versionCode 1

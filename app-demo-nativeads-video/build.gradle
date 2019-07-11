@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.youappi.test.app_demo_nativevideo"
+        applicationId "com.youappi.sdk.demo.nativeads"
         minSdkVersion 14
         targetSdkVersion 28
         versionCode 1
