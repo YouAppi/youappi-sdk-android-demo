@@ -19,9 +19,8 @@ Load the project with Android Studio and Gradle will do the rest.
 
 
 ### How do I get the latest SDK? ###
-* Please make sure to take the assets from the support website. 
-* Please note that the demo apps listed here might not contain the updated SDK versions.
-* You can download our latest SDK from the support web site:
+* **Please note** that the demo apps **might not** contain the latest SDK.
+* You can download the latest SDK from our support web site:
 
     SDK: [SDK Support](http://support.youappi.com/knowledgebase/android-sdk/)
 
