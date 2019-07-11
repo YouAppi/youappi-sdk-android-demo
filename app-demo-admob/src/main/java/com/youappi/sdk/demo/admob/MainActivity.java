@@ -1,4 +1,4 @@
-package com.youappi.medaition.admob.demo;
+package com.youappi.sdk.demo.admob;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.youappi.demo.admob.R;
 import com.youappi.sdk.YouAPPi;
 import com.youappi.sdk.mediation.admob.YouAppiAdmob;
 import com.youappi.sdk.mediation.admob.YouAppiInterstitialAd;

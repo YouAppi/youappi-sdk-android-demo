@@ -1,4 +1,4 @@
-package com.youappi.test.app_demo_nativevideo;
+package com.youappi.sdk.demo.nativeads;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import android.widget.Button;
 import com.youappi.sdk.nativeads.AdRequest;
 import com.youappi.sdk.nativeads.NativeAd;
 import com.youappi.sdk.nativeads.NativeTypes;
-
 import com.youappi.sdk.nativeads.listeners.NativeAdListener;
 import com.youappi.sdk.nativeads.listeners.NativeAdResponseListener;
 import com.youappi.sdk.nativeads.video.NativeVideoAdsRenderer;
@@ -21,31 +20,20 @@ public class MainActivity extends Activity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    View advView;
-    View advView2;
-    View advView3;
-    NativeVideoAdsRenderer nativeVideoAdsRenderer;
-    int counter = 0;
+    private View advView;
+    private View advView2;
+    private View advView3;
+    private NativeVideoAdsRenderer nativeVideoAdsRenderer;
+    private int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         advView = findViewById(R.id.adv_view);
         advView2 = findViewById(R.id.adv_view2);
         advView3 = findViewById(R.id.adv_view3);
-
-        Button envButton = findViewById(R.id.env);
-        if (BuildConfig.DEBUG) {
-            envButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    EnvironmentChanger.openEnvironment(MainActivity.this);
-                }
-            });
-        } else {
-            envButton.setVisibility(View.GONE);
-        }
 
         final Button buttonLoadAd = findViewById(R.id.buttonLoadAd);
 
@@ -96,12 +84,12 @@ public class MainActivity extends Activity {
                 .setNativeAdListener(new NativeAdListener() {
                     @Override
                     public void onFailure(NativeTypes.ErrorCode errorCode, Exception e) {
-                        Log.e(TAG, "ad failiure. code: " + errorCode.name() + " exception: " + e.getMessage());
+                        Log.e(TAG, "Ad failure. Error code: " + errorCode.name(), e);
                     }
 
                     @Override
                     public void onAdClicked() {
-                        Log.e(TAG, "ad clicked");
+                        Log.e(TAG, "Ad clicked");
                     }
 
                     @Override

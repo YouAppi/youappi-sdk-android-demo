@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
 
     defaultConfig {
-        applicationId "com.youappi.mediation.mopub.demo"
+        applicationId "com.youappi.sdk.demo.mopub"
         minSdkVersion 23
         targetSdkVersion 26
         versionCode 1

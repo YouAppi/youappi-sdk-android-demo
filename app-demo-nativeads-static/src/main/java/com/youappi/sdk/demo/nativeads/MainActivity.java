@@ -1,4 +1,4 @@
-package com.youappi.sdk.nativeads.demo;
+package com.youappi.sdk.demo.nativeads;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
