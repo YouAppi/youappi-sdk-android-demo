@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.youappi.sdk.nativeads.com.youappi.sdk.demo.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,14 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Load Native Ad"
-            tools:ignore="ButtonStyle,HardcodedText" />
-
-        <Button
-            android:id="@+id/env"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="ENV"
             tools:ignore="ButtonStyle,HardcodedText" />
 
     </LinearLayout>

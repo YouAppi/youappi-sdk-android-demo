@@ -24,6 +24,8 @@ allprojects {
 
         google()
         maven { url "http://repository.youappi.com/repository/release" }
+
+        // Needed for Moat dependency in MoPub module
         maven { url "https://s3.amazonaws.com/moat-sdk-builds" }
     }
 }
