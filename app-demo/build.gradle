@@ -30,6 +30,6 @@ dependencies {
 
     // YouAppi SDK
     implementation "com.youappi.sdk:youappi-sdk-android-moat:4.4.2"
-
+    implementation('com.google.android.gms:play-services-ads-identifier:16.0.0')
 }
 
