@@ -31,5 +31,8 @@ dependencies {
     // YouAppi SDK
     implementation "com.youappi.sdk:youappi-sdk-android-moat:4.4.2"
 
+    //Access to the Android Advertising ID (AAID)
+    implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0'
+
 }
 
