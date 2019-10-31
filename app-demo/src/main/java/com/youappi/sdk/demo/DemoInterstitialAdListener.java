@@ -73,4 +73,19 @@ public class DemoInterstitialAdListener implements YAInterstitialAd.Interstitial
     public void onAdLeftApplication(String s) {
 
     }
+
+    @Override
+    public void onVideoStart(String s) {
+
+    }
+
+    @Override
+    public void onVideoEnd(String s) {
+
+    }
+
+    @Override
+    public void onVideoSkipped(String s, int i) {
+
+    }
 }

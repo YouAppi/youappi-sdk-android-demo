@@ -14,12 +14,12 @@ import android.widget.ProgressBar;
 
 import com.youappi.sdk.BaseAd;
 import com.youappi.sdk.YouAPPi;
+import com.youappi.sdk.ads.YAAdRequest;
 import com.youappi.sdk.ads.YAInterstitialAd;
 import com.youappi.sdk.ads.YARewardedVideoAd;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    static final String TAG = MainActivity.class.getSimpleName();
     Button buttonRewardedVideo;
     Button buttonInterstitialVideo;
     Button buttonInterstitialAd;
@@ -46,20 +46,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progressBarRewardedVideo = (ProgressBar) findViewById(R.id.progress_rewarded_video);
-        progressBarInterstitialVideo = (ProgressBar) findViewById(R.id.progress_interstitial_video);
-        progressBarInterstitialAd = (ProgressBar) findViewById(R.id.progress_interstitial_ad);
+        progressBarRewardedVideo = findViewById(R.id.progress_rewarded_video);
+        progressBarInterstitialVideo = findViewById(R.id.progress_interstitial_video);
+        progressBarInterstitialAd = findViewById(R.id.progress_interstitial_ad);
 
-        buttonRewardedVideo = (Button) findViewById(R.id.button_rewarded_video);
+        buttonRewardedVideo = findViewById(R.id.button_rewarded_video);
         buttonRewardedVideo.setOnClickListener(this);
 
-        buttonInterstitialVideo = (Button) findViewById(R.id.button_interstitial_video);
+        buttonInterstitialVideo = findViewById(R.id.button_interstitial_video);
         buttonInterstitialVideo.setOnClickListener(this);
 
-        buttonInterstitialAd = (Button) findViewById(R.id.button_interstitial_ad);
+        buttonInterstitialAd = findViewById(R.id.button_interstitial_ad);
         buttonInterstitialAd.setOnClickListener(this);
 
-        Button buttonAdUnitId = (Button) findViewById(R.id.button_adunitid);
+        Button buttonAdUnitId = findViewById(R.id.button_adunitid);
         buttonAdUnitId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rewardedVideoAd = YouAPPi.getInstance().rewardedVideoAd(adUnitIdRewardedVideo);
         interstitialVideoAd = YouAPPi.getInstance().interstitialAd(adUnitIdInterstitialVideo);
         interstitialAd = YouAPPi.getInstance().interstitialAd(adUnitIdInterstitialAd);
+
+        interstitialAd.setAdRequest(new YAAdRequest().setCreativeType(YAAdRequest.CreativeType.Video));
+        interstitialAd.setAdRequest(new YAAdRequest().setCreativeType(YAAdRequest.CreativeType.Static));
 
         rewardedVideoAd.setRewardedVideoAdListener(new DemoRewardedVideoAdListener(this));
         interstitialVideoAd.setInterstitialAdListener(new DemoInterstitialAdListener(this));

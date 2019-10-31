@@ -4,14 +4,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.youappi.sdk.YAErrorCode;
-import com.youappi.sdk.ads.YAInterstitialVideoAd;
+import com.youappi.sdk.ads.YAInterstitialAd;
 
 /**
  * User: Bashan
  * Date: 02/10/2017
  * Time: 16:21
  */
-public class DemoInterstitialVideoAdListener implements YAInterstitialVideoAd.InterstitialVideoAdListener {
+public class DemoInterstitialVideoAdListener implements YAInterstitialAd.InterstitialAdListener {
 
     private static final String TAG = DemoInterstitialVideoAdListener.class.getSimpleName();
 
