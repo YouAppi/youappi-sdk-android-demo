@@ -10,7 +10,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -26,12 +26,12 @@ android {
 
 dependencies {
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 
     // YouAppi SDK
-    implementation "com.youappi.sdk:youappi-sdk-android-moat:4.4.3"
+    implementation "com.youappi.sdk:youappi-sdk-android-moat:5.0.0"
 
     //Access to the Android Advertising ID (AAID)
-    implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
 }
 
