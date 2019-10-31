@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.youappi.sdk.nativeads.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.youappi.sdk.nativeads.NativeContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nativead_view"
     android:layout_width="match_parent"
@@ -121,4 +121,4 @@
         android:textColor="#aa000000"
         tools:ignore="HardcodedText,RtlHardcoded"/>
 
-</com.youappi.sdk.nativeads.NativeAdView>
+</com.youappi.sdk.nativeads.NativeContainerView>

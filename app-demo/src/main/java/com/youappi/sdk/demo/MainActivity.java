@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +15,9 @@ import android.widget.ProgressBar;
 import com.youappi.sdk.BaseAd;
 import com.youappi.sdk.YouAPPi;
 import com.youappi.sdk.ads.YAInterstitialAd;
-import com.youappi.sdk.ads.YAInterstitialVideoAd;
 import com.youappi.sdk.ads.YARewardedVideoAd;
-import com.youappi.sdk.logic.Logger;
 
-
-public class MainActivity extends AppCompatActivity implements Logger.LogListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     static final String TAG = MainActivity.class.getSimpleName();
     Button buttonRewardedVideo;
@@ -31,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
     private ProgressBar progressBarInterstitialVideo;
     private ProgressBar progressBarInterstitialAd;
     private YARewardedVideoAd rewardedVideoAd;
-    private YAInterstitialVideoAd interstitialVideoAd;
+    private YAInterstitialAd interstitialVideoAd;
     private YAInterstitialAd interstitialAd;
     private String adUnitIdRewardedVideo = "test_rewarded_video_android";
     private String adUnitIdInterstitialVideo = "test_interstitial_video_android";
@@ -76,11 +72,11 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
 
     private void initAdUnits() {
         rewardedVideoAd = YouAPPi.getInstance().rewardedVideoAd(adUnitIdRewardedVideo);
-        interstitialVideoAd = YouAPPi.getInstance().interstitialVideoAd(adUnitIdInterstitialVideo);
+        interstitialVideoAd = YouAPPi.getInstance().interstitialAd(adUnitIdInterstitialVideo);
         interstitialAd = YouAPPi.getInstance().interstitialAd(adUnitIdInterstitialAd);
 
         rewardedVideoAd.setRewardedVideoAdListener(new DemoRewardedVideoAdListener(this));
-        interstitialVideoAd.setInterstitialVideoAdListener(new DemoInterstitialVideoAdListener(this));
+        interstitialVideoAd.setInterstitialAdListener(new DemoInterstitialAdListener(this));
         interstitialAd.setInterstitialAdListener(new DemoInterstitialAdListener(this));
 
         setButtonState(buttonRewardedVideo, ButtonState.LOAD);
@@ -148,11 +144,6 @@ public class MainActivity extends AppCompatActivity implements Logger.LogListene
                 ad.show();
             }
         }
-    }
-
-    @Override
-    public void log(String tag, String msg) {
-        Log.i(tag, msg);
     }
 
     private void createAdUnitIdDialog() {

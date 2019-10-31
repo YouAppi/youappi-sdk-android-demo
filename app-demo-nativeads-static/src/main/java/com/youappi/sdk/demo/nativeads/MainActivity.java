@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.youappi.sdk.nativeads.AdRequest;
 import com.youappi.sdk.nativeads.NativeAd;
-import com.youappi.sdk.nativeads.NativeAdView;
+import com.youappi.sdk.nativeads.NativeContainerView;
 import com.youappi.sdk.nativeads.NativeStaticAdsRenderer;
 import com.youappi.sdk.nativeads.NativeTypes;
 import com.youappi.sdk.nativeads.StaticNativeAd;
@@ -63,8 +63,8 @@ public class MainActivity extends Activity {
                         .setNativeAdResponseListener(new NativeAdResponseListener() {
                             @Override
                             public void onNativeAdResponse(NativeAd nativeAd) {
-                                final NativeAdView nativeAdView = findViewById(R.id.includedLayout);
-                                nativeStaticAdsRenderer.renderAd(nativeAdView, (StaticNativeAd) nativeAd);
+                                final NativeContainerView nativeContainerView = findViewById(R.id.includedLayout);
+                                nativeStaticAdsRenderer.renderAd(nativeContainerView, (StaticNativeAd) nativeAd);
                                 textState.setText("Ad was loaded");
                                 nativeAdViewContainer.setVisibility(View.VISIBLE);
                             }
